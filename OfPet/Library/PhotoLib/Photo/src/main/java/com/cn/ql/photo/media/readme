@@ -1,0 +1,20 @@
+MediaTool mediaTool = new MediaTool(this);
+        mediaTool.getMediaParentPaths(MediaType.VIDEO_IMAGE, new ImageLoadListener() {
+            @Override
+            public void loadStart() {
+
+            }
+
+            @Override
+            public void loadEnd() {
+
+            }
+
+            @Override
+            public void loadComplete(List<MediaEntity> allEntity, List<MediaFolder> folders) {
+                Log.e("ABC", folders.toString());
+                if (folders.size() > 0) {
+                    show(folders.get(0));
+                }
+            }
+        });

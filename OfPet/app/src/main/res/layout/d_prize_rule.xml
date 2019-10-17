@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout android:id="@+id/llParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/shape_11"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/dp30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="奖品规则"
+                android:textColor="@color/color181818"
+                android:textSize="@dimen/sp15"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp30"
+                android:lineSpacingExtra="@dimen/sp16"
+                android:text="1. 奖品规则奖品规则奖品规则奖品规则奖品规则奖品规则奖品规则奖品"
+                android:textColor="@color/color404040"
+                android:textSize="@dimen/sp14"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:src="@mipmap/close"
+            android:scaleType="centerInside"
+            android:layout_marginTop="@dimen/dp30"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+

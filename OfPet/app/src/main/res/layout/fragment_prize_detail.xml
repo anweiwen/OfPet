@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include layout="@layout/include_top_1" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.shehuan.niv.NiceImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp155"
+                android:layout_margin="@dimen/dp18"
+                app:corner_radius="@dimen/dp7"
+                android:src="@drawable/place_holder"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="参赛规则"
+                android:layout_marginLeft="@dimen/dp20"
+                android:textColor="@color/color2F2F2F"
+                android:textSize="@dimen/sp15"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_marginRight="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp20"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="时间"
+                    android:textColor="@color/colorFF8000"
+                    android:textSize="@dimen/sp12"
+                    android:background="@drawable/shape_8"
+                    android:paddingLeft="@dimen/dp8"
+                    android:paddingRight="@dimen/dp8"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2019.04.08~2019.06.08"
+                    android:textSize="@dimen/sp12"
+                    android:textColor="@color/color646464"
+                    android:layout_marginLeft="@dimen/dp15"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_marginRight="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp15"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="人数"
+                    android:textColor="@color/colorFF8000"
+                    android:textSize="@dimen/sp12"
+                    android:background="@drawable/shape_8"
+                    android:paddingLeft="@dimen/dp8"
+                    android:paddingRight="@dimen/dp8"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已参加 456人"
+                    android:textSize="@dimen/sp12"
+                    android:textColor="@color/color646464"
+                    android:layout_marginLeft="@dimen/dp15"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_marginRight="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp15" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="规则"
+                    android:textColor="@color/colorFF8000"
+                    android:textSize="@dimen/sp12"
+                    android:background="@drawable/shape_8"
+                    android:paddingLeft="@dimen/dp8"
+                    android:paddingRight="@dimen/dp8"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则"
+                    android:textSize="@dimen/sp12"
+                    android:textColor="@color/color646464"
+                    android:layout_marginLeft="@dimen/dp15" />
+
+            </LinearLayout>
+
+            <TextView android:id="@+id/tvGet"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp36"
+                android:layout_marginLeft="@dimen/dp60"
+                android:layout_marginRight="@dimen/dp60"
+                android:layout_marginTop="@dimen/dp25"
+                android:background="@drawable/selector_3"
+                android:text="领取奖品"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp14"/>
+
+            <View style="@style/divider_1"
+                android:layout_height="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp20"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/dp17"
+                android:paddingLeft="@dimen/dp20"
+                android:paddingRight="@dimen/dp20"
+                android:paddingBottom="@dimen/dp18">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="奖品提供者"
+                    android:textSize="@dimen/sp15"
+                    android:textColor="@color/color2F2F2F"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:gravity="center_vertical">
+
+                    <com.shehuan.niv.NiceImageView
+                        android:layout_width="@dimen/dp45"
+                        android:layout_height="@dimen/dp45"
+                        android:src="@drawable/place_holder"
+                        app:is_circle="true"/>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/dp00"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="大华"
+                            android:textColor="@color/color181818"
+                            android:textSize="@dimen/sp14"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="热爱生活，朝着诗和远方前进"
+                            android:textColor="@color/color8A8A8A"
+                            android:textSize="@dimen/sp13"
+                            android:layout_marginTop="@dimen/dp8"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="查看主页"
+                        android:textColor="@color/colorFF8000"
+                        android:textSize="@dimen/sp12"
+                        android:background="@drawable/shape_8"
+                        android:padding="@dimen/dp8"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View style="@style/divider_1"
+                android:layout_height="@dimen/dp10"  />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="参赛作品（000个）"
+                android:textSize="@dimen/sp15"
+                android:textColor="@color/color2F2F2F"
+                android:padding="@dimen/dp18"/>
+
+            <com.cn.ql.frame.widget.NoScrollRecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorF6F6F6">
+
+    <include layout="@layout/include_top_1" />
+    
+    <LinearLayout android:id="@+id/llRecord"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp125"
+        android:gravity="center"
+        android:layout_margin="@dimen/dp13"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="账户余额"
+            android:textColor="@color/color4E4E4E"
+            android:textSize="@dimen/sp12"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00000"
+            android:textColor="@color/colorFF8000"
+            android:textSize="@dimen/sp17"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/dp17"/>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp46"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp30"
+        android:paddingRight="@dimen/dp17">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/zs"/>
+
+        <EditText
+            android:layout_width="@dimen/dp00"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp10"
+            android:background="@android:color/transparent"
+            android:hint="请输入充值宠币数量"
+            android:textSize="@dimen/sp13"
+            android:textColor="@color/color323232"
+            android:textColorHint="@color/colorC4C4C4"
+            android:layout_marginRight="@dimen/dp10"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥0.00"
+            android:textSize="@dimen/sp13"
+            android:textColor="@color/colorFF8000"
+            android:background="@drawable/shape_6"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp20"
+            android:paddingRight="@dimen/dp20"
+            android:paddingTop="@dimen/dp6"
+            android:paddingBottom="@dimen/dp6"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp10"/>
+
+</LinearLayout>

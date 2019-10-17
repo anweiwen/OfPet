@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/layout_item">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginBottom="@dimen/dp10"
+        android:background="@drawable/shape_7">
+        
+        <com.shehuan.niv.NiceImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp100"
+            app:corner_top_left_radius="@dimen/dp3"
+            app:corner_top_right_radius="@dimen/dp3"
+            android:src="@drawable/place_holder"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="水果生鲜类"
+            android:lines="2"
+            android:ellipsize="end"
+            android:padding="@dimen/dp10"
+            android:textColor="@color/color404040"
+            android:textSize="@dimen/sp15"/>
+        
+    </LinearLayout>
+
+</LinearLayout>

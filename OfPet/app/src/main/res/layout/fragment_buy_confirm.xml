@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include layout="@layout/include_top_1" />
+
+    <View style="@style/divider_1" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp00"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp13"
+                android:layout_marginLeft="@dimen/dp4"
+                android:layout_marginRight="@dimen/dp4">
+
+                <ImageView
+                    android:layout_width="@dimen/dp70"
+                    android:layout_height="@dimen/dp94"
+                    android:src="@drawable/place_holder"
+                    android:scaleType="centerInside"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp10">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="小哥哥帅气穿搭"
+                        android:textSize="@dimen/sp14"
+                        android:textColor="@color/color323232" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp18"
+                        android:text="发布时间：2019-06-01"
+                        android:textSize="@dimen/sp12"
+                        android:textColor="@color/colorABABAB" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View style="@style/divider_2"
+                android:layout_height="@dimen/dp10" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="在发现页展示"
+                android:textSize="@dimen/sp15"
+                android:textColor="@color/color5A5A5A"
+                android:layout_marginLeft="@dimen/dp13"
+                android:layout_marginTop="@dimen/dp25" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="展示给1000个潜在粉丝"
+                android:textSize="@dimen/sp15"
+                android:textColor="@color/color9A9A9A"
+                android:layout_marginLeft="@dimen/dp12"
+                android:layout_marginRight="@dimen/dp12"
+                android:layout_marginTop="@dimen/dp10" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewFind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp12"
+                android:layout_marginRight="@dimen/dp12"
+                android:layout_marginTop="@dimen/dp20"/>
+
+            <View style="@style/divider_2"
+                android:layout_height="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp20"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="在同城页展示"
+                android:textSize="@dimen/sp15"
+                android:textColor="@color/color5A5A5A"
+                android:layout_marginLeft="@dimen/dp13"
+                android:layout_marginTop="@dimen/dp25" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="展示给1000个潜在粉丝"
+                android:textSize="@dimen/sp15"
+                android:textColor="@color/color9A9A9A"
+                android:layout_marginLeft="@dimen/dp12"
+                android:layout_marginRight="@dimen/dp12"
+                android:layout_marginTop="@dimen/dp10" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp12"
+                android:layout_marginRight="@dimen/dp12"
+                android:layout_marginTop="@dimen/dp20"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp30"
+                android:background="@color/colorF0F0F0" />
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp49"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp20"
+        android:paddingRight="@dimen/dp20">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="待付："
+            android:textSize="@dimen/sp14"
+            android:textColor="@color/color696969" />
+
+        <TextView
+            android:layout_width="@dimen/dp00"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="¥15.5"
+            android:textSize="@dimen/sp14"
+            android:textColor="@color/colorFF8000" />
+
+
+        <TextView
+            android:layout_width="@dimen/dp90"
+            android:layout_height="@dimen/dp33"
+            android:text="支付"
+            android:textSize="@dimen/sp14"
+            android:textColor="@color/white"
+            android:background="@drawable/shape_4"
+            android:gravity="center"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

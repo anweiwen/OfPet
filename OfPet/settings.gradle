@@ -1,0 +1,14 @@
+include ':app',
+        ':Library:PhotoLib:Photo',
+        ':Library:FLBase',
+        ':Library:PhotoLib:Camera',
+        ':Library:FLFrame',
+        ':Library:Loading',
+
+        ':Library:LiteAv:LiteAv',
+        ':Library:LiteAv:lvb',
+        ':Library:LiteAv:player',
+        ':Library:LiteAv:videoediter',
+        ':Library:LiteAv:videojoiner',
+        ':Library:LiteAv:videorecorder',
+        ':Library:LiteAv:videouploader'

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout android:id="@+id/llParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/shape_11"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/dp30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="完成以下任务才可领取奖励"
+                android:textColor="@color/color181818"
+                android:textSize="@dimen/sp15"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/dp40">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/shiping1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="还需要拍摄10个视频"
+                    android:textSize="@dimen/sp14"
+                    android:textColor="@color/color646464"
+                    android:layout_marginLeft="@dimen/dp14"
+                    android:layout_marginRight="@dimen/dp10"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="去完成"
+                    android:textColor="@color/colorFF8000"
+                    android:textSize="@dimen/sp12"
+                    android:background="@drawable/shape_8"
+                    android:paddingLeft="@dimen/dp8"
+                    android:paddingRight="@dimen/dp8"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/dp30">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/fengsi1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="还需要10个粉丝量"
+                    android:textSize="@dimen/sp14"
+                    android:textColor="@color/color646464"
+                    android:layout_marginLeft="@dimen/dp14"
+                    android:layout_marginRight="@dimen/dp10"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="去完成"
+                    android:textColor="@color/colorFF8000"
+                    android:textSize="@dimen/sp12"
+                    android:background="@drawable/shape_8"
+                    android:paddingLeft="@dimen/dp8"
+                    android:paddingRight="@dimen/dp8"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/dp30">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/zan1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="还需要30个获赞量"
+                    android:textSize="@dimen/sp14"
+                    android:textColor="@color/color646464"
+                    android:layout_marginLeft="@dimen/dp14"
+                    android:layout_marginRight="@dimen/dp10"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="去完成"
+                    android:textColor="@color/colorFF8000"
+                    android:textSize="@dimen/sp12"
+                    android:background="@drawable/shape_8"
+                    android:paddingLeft="@dimen/dp8"
+                    android:paddingRight="@dimen/dp8"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:src="@mipmap/close"
+            android:scaleType="centerInside"
+            android:layout_marginTop="@dimen/dp30"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+

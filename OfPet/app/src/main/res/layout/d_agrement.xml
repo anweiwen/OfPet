@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout android:id="@+id/llParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/shape_11"
+        android:paddingTop="@dimen/dp20"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="《闲宠使用协议》概要"
+            android:textSize="@dimen/sp15"
+            android:textColor="@color/color282828" />
+
+        <TextView android:id="@+id/tvContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp30"
+            android:text="感谢您使用闲宠直播！本《隐私政策》将向您说明：
+1.您在未注册/登录下可使用的功 能是文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容
+2.文字内容文字内容文字内容文字内容文字内容文字内容文字内
+3.请您完整阅读本《使用协议》并确认是否同意使用
+"
+            android:textColor="@color/color1E1E1E"
+            android:textSize="@dimen/sp13"
+            android:lineSpacingExtra="@dimen/dp7"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp20"/>
+
+        <View style="@style/divider_1"
+            android:layout_marginTop="@dimen/dp15"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp44"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/dp00"
+                android:layout_height="@dimen/dp44"
+                android:layout_weight="1"
+                android:text="不同意"
+                android:textColor="@color/colorCECECE"
+                android:textSize="@dimen/sp15"
+                android:gravity="center"/>
+
+            <View style="@style/divider_1"
+                android:layout_width="@dimen/dp1"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:layout_width="@dimen/dp00"
+                android:layout_height="@dimen/dp44"
+                android:layout_weight="1"
+                android:text="同意"
+                android:textColor="@color/colorFF8000"
+                android:textSize="@dimen/sp15"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+

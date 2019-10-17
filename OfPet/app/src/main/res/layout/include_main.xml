@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout android:id="@+id/frame_layout_tab"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp00"
+        android:layout_weight="1"
+        android:background="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp49"
+        android:orientation="horizontal">
+
+        <FrameLayout android:id="@+id/flHome"
+            android:layout_width="@dimen/dp00"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="首页"
+                android:textColor="@drawable/color_main_tab"
+                android:textSize="@dimen/sp16"/>
+
+        </FrameLayout>
+
+        <FrameLayout android:id="@+id/flPrize"
+            android:layout_width="@dimen/dp00"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="奖品"
+                android:textColor="@drawable/color_main_tab"
+                android:textSize="@dimen/sp16"/>
+
+        </FrameLayout>
+
+        <FrameLayout android:id="@+id/flTask"
+            android:layout_width="@dimen/dp00"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="任务"
+                android:textColor="@drawable/color_main_tab"
+                android:textSize="@dimen/sp16"/>
+
+        </FrameLayout>
+
+        <FrameLayout android:id="@+id/flIdel"
+            android:layout_width="@dimen/dp00"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="闲置"
+                android:textColor="@drawable/color_main_tab"
+                android:textSize="@dimen/sp16"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black95">#0D000000</color>
+    <color name="black24">#3D000000</color>
+
+    <color name="colorDDDDDD">#DDDDDD</color>
+    <color name="color666666">#666666</color>
+    <color name="color777777">#777777</color>
+    <color name="color999999">#999999</color>
+    <color name="colorBBBBBB">#BBBBBB</color>
+    <color name="colorEEEEEE">#EEEEEE</color>
+
+    <color name="color1E1E1E">#1E1E1E</color>
+    <color name="color1C1C1C">#1C1C1C</color>
+    <color name="color323232">#323232</color>
+    <color name="color5F5F5F">#5F5F5F</color>
+    <color name="color909090">#909090</color>
+    <color name="colorFCFCFC">#FCFCFC</color>
+    <color name="color404040">#404040</color>
+    <color name="colorD2D2D2">#D2D2D2</color>
+    <color name="colorE6E6E6">#E6E6E6</color>
+    <color name="colorEAEAEA">#EAEAEA</color>
+    <color name="color5A5A5A">#5A5A5A</color>
+    <color name="colorF6F6F6">#F6F6F6</color>
+    <color name="color969696">#969696</color>
+    <color name="colorF0F0F0">#F0F0F0</color>
+    <color name="color8A8A8A">#8A8A8A</color>
+    <color name="colorABABAB">#ABABAB</color>
+    <color name="color9A9A9A">#9A9A9A</color>
+    <color name="color696969">#696969</color>
+    <color name="color4E4E4E">#4E4E4E</color>
+    <color name="colorC4C4C4">#C4C4C4</color>
+    <color name="color646464">#646464</color>
+    <color name="color2F2F2F">#2F2F2F</color>
+    <color name="colorA9A9A9">#A9A9A9</color>
+    <color name="color181818">#181818</color>
+    <color name="color5B5C5C">#5B5C5C</color>
+    <color name="color282828">#282828</color>
+    <color name="colorCECECE">#CECECE</color>
+    <color name="color292929">#292929</color>
+
+    <color name="color5F5F5F_6">#0F5F5F5F</color>
+
+    <color name="colorFF8000">#FF8000</color>
+    <color name="colorFF8000_20">#33FF8000</color>
+
+</resources>

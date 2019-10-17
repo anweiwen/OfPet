@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.8</item>
+    </style>
+
+    <style name="Pop_Top_Anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/in_top</item>
+        <item name="android:windowExitAnimation">@anim/out_top</item>
+    </style>
+
+    <style name="Pop_Bottom_Anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/out_bottom</item>
+    </style>
+
+    <style name="Pop_Alpha_Anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/in_alpha_0</item>
+        <item name="android:windowExitAnimation">@anim/out_alpha_0</item>
+    </style>
+
+</resources>

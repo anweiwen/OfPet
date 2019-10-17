@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/layout_item">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/dp8"
+        android:layout_marginLeft="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp10"
+        android:gravity="center">
+        
+        <com.shehuan.niv.NiceImageView
+            android:layout_width="@dimen/dp160"
+            android:layout_height="@dimen/dp110"
+            app:corner_top_left_radius="@dimen/dp3"
+            app:corner_top_right_radius="@dimen/dp3"
+            android:src="@drawable/place_holder"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/dp10">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="水果生鲜类"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textColor="@color/color2F2F2F"
+                android:textSize="@dimen/sp13"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="时间：2019/05/12-2019/06/12"
+                android:textColor="@color/color909090"
+                android:textSize="@dimen/sp10"
+                android:layout_marginTop="@dimen/dp10"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="已参加人数：000"
+                android:textColor="@color/color909090"
+                android:textSize="@dimen/sp10"
+                android:layout_marginTop="@dimen/dp10"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="进行中"
+                android:textColor="@color/colorFF8000"
+                android:textSize="@dimen/sp9"
+                android:layout_marginTop="@dimen/dp10"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="去看看"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp12"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:background="@drawable/selector_4"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View style="@style/divider_2"
+        android:layout_height="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10" />
+
+</LinearLayout>

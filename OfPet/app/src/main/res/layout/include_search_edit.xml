@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/linear_top_parent"
+    android:background="@color/white">
+
+    <com.cn.ql.frame.widget.BarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout android:id="@+id/llTabTop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp49"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="@dimen/dp00"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dp33"
+            android:layout_marginLeft="@dimen/dp15"
+            android:background="@drawable/shape_14"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/sousuo1"
+                android:scaleType="centerInside"
+                android:layout_marginLeft="@dimen/dp15"/>
+
+            <EditText android:id="@+id/etText"
+                android:layout_width="@dimen/dp00"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="@dimen/dp10"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:hint="搜索你感兴趣的"
+                android:textColorHint="@color/colorC4C4C4"
+                android:textSize="@dimen/sp13"
+                android:paddingRight="@dimen/dp10"
+                android:textColor="@color/color5F5F5F"/>
+
+            <ImageView android:id="@+id/ivDelete"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="match_parent"
+                android:src="@mipmap/shangchu1"
+                android:scaleType="centerInside"/>
+
+        </LinearLayout>
+
+        <TextView android:id="@+id/tvCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="取消"
+            android:textColor="@color/color282828"
+            android:textSize="@dimen/sp14"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"/>
+
+    </LinearLayout>
+</LinearLayout>

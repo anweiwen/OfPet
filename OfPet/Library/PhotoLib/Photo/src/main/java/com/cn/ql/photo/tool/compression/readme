@@ -1,0 +1,42 @@
+异步调用
+CompressionTool.with(this)
+        .load(photos)
+        .ignoreBy(100)
+        .setTargetDir(getPath())
+        .filter(new CompressionPredicate() {
+          @Override
+          public boolean apply(String path) {
+            return !(TextUtils.isEmpty(path) || path.toLowerCase().endsWith(".gif"));
+          }
+        })
+        .setCompressListener(new OnCompressListener() {
+          @Override
+          public void onStart() {
+            // TODO 压缩开始前调用，可以在方法内启动 loading UI
+          }
+
+          @Override
+          public void onSuccess(File file) {
+            // TODO 压缩成功后调用，返回压缩后的图片文件
+          }
+
+          @Override
+          public void onError(Throwable e) {
+            // TODO 当压缩过程出现问题时调用
+          }
+        }).launch();
+
+
+同步调用
+同步方法请尽量避免在主线程调用以免阻塞主线程，下面以rxJava调用为例
+
+Flowable.just(photos)
+    .observeOn(Schedulers.io())
+    .map(new Function<List<String>, List<File>>() {
+      @Override public List<File> apply(@NonNull List<String> list) throws Exception {
+        // 同步方法直接返回压缩后的文件
+        return CompressionTool.with(MainActivity.this).load(list).get();
+      }
+    })
+    .observeOn(AndroidSchedulers.mainThread())
+    .subscribe();

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp49">
+
+    <ImageView android:id="@+id/image_top_menu"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="match_parent"
+        android:src="@mipmap/cd"
+        android:scaleType="centerInside" />
+
+    <TextView android:id="@+id/tvTopTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="奖品"
+        android:textColor="@color/color323232"
+        android:textSize="@dimen/sp18"/>
+
+    <TextView android:id="@+id/tvTopRight"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:text="提供奖品"
+        android:textColor="@color/color5F5F5F"
+        android:textSize="@dimen/sp15"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingRight="@dimen/dp15"/>
+
+</FrameLayout>

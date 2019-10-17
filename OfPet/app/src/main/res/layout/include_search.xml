@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/linear_top_parent"
+    android:background="@color/white">
+
+    <com.cn.ql.frame.widget.BarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout android:id="@+id/llTabTop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp49"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="@dimen/dp00"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dp33"
+            android:layout_marginLeft="@dimen/dp15"
+            android:background="@drawable/shape_14"
+            android:gravity="center_vertical">
+
+            <LinearLayout android:id="@+id/llType"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15">
+
+                <TextView android:id="@+id/tvType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="视频 "
+                    android:textColor="@color/color5F5F5F"
+                    android:textSize="@dimen/sp13"
+                    android:drawableRight="@mipmap/xiala1"/>
+
+            </LinearLayout>
+
+            <View android:layout_width="@dimen/dp1"
+                android:layout_height="@dimen/dp12"
+                android:background="@color/color777777" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/sousuo1"
+                android:scaleType="centerInside"
+                android:layout_marginLeft="@dimen/dp15"/>
+
+            <EditText android:id="@+id/etText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="@dimen/dp10"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:hint="搜索你感兴趣的"
+                android:textColorHint="@color/colorC4C4C4"
+                android:textSize="@dimen/sp13"
+                android:paddingRight="@dimen/dp10"
+                android:textColor="@color/color5F5F5F"/>
+
+        </LinearLayout>
+
+        <TextView android:id="@+id/tvCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="取消"
+            android:textColor="@color/color282828"
+            android:textSize="@dimen/sp14"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"/>
+
+    </LinearLayout>
+</LinearLayout>

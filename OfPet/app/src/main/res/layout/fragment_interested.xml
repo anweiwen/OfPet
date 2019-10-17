@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择感兴趣的内容"
+        android:textColor="@color/color292929"
+        android:textSize="@dimen/sp24"
+        android:layout_marginTop="@dimen/dp90"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="为您私人定制内容"
+        android:textColor="@color/color999999"
+        android:textSize="@dimen/sp15"
+        android:layout_marginTop="@dimen/dp22"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp00"
+        android:layout_weight="1"
+        android:layout_marginLeft="@dimen/dp40"
+        android:layout_marginRight="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp30"
+        android:layout_marginBottom="@dimen/dp20"
+        android:scrollbars="none"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp49"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/selector_5"
+            android:layout_marginLeft="@dimen/dp30"
+            android:layout_marginRight="@dimen/dp30"
+            android:layout_marginTop="@dimen/dp7"
+            android:layout_marginBottom="@dimen/dp7"
+            android:text="选择你感兴趣的（1）"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp14"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/include_top_1" />
+
+    <View style="@style/divider_1" />
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp00"
+        android:layout_weight="1">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp44"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp20"
+                android:paddingRight="@dimen/dp20">
+                
+                <TextView
+                    android:layout_width="@dimen/dp60"
+                    android:layout_height="wrap_content"
+                    android:text="姓名"
+                    android:textColor="@color/color5B5C5C"
+                    android:textSize="@dimen/sp14"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:hint="请输入真实姓名（必填）"
+                    android:textColorHint="@color/colorABABAB"
+                    android:textSize="@dimen/sp14"
+                    android:textColor="@color/color5B5C5C"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:inputType="text"/>
+                
+            </LinearLayout>
+
+            <View style="@style/divider_1"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_marginRight="@dimen/dp20"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp44"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp20"
+                android:paddingRight="@dimen/dp20">
+
+                <TextView
+                    android:layout_width="@dimen/dp60"
+                    android:layout_height="wrap_content"
+                    android:text="联系方式"
+                    android:textColor="@color/color5B5C5C"
+                    android:textSize="@dimen/sp14"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:hint="请输入联系电话"
+                    android:textColorHint="@color/colorABABAB"
+                    android:textSize="@dimen/sp14"
+                    android:textColor="@color/color5B5C5C"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:inputType="phone"/>
+
+            </LinearLayout>
+
+            <View style="@style/divider_1"
+                android:layout_height="@dimen/dp10"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp44"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp20"
+                android:paddingRight="@dimen/dp20">
+
+                <TextView
+                    android:layout_width="@dimen/dp60"
+                    android:layout_height="wrap_content"
+                    android:text="奖品名称"
+                    android:textColor="@color/color5B5C5C"
+                    android:textSize="@dimen/sp14"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:hint="请输入奖品名称"
+                    android:textColorHint="@color/colorABABAB"
+                    android:textSize="@dimen/sp14"
+                    android:textColor="@color/color5B5C5C"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:inputType="text"/>
+
+            </LinearLayout>
+
+            <View style="@style/divider_1"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_marginRight="@dimen/dp20"/>
+
+
+            <LinearLayout android:id="@+id/llClass"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp44"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp20"
+                android:paddingRight="@dimen/dp20">
+
+                <TextView
+                    android:layout_width="@dimen/dp60"
+                    android:layout_height="wrap_content"
+                    android:text="所属类别"
+                    android:textColor="@color/color5B5C5C"
+                    android:textSize="@dimen/sp14"/>
+
+                <TextView
+                    android:layout_width="@dimen/dp00"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:hint="请选择奖品所属类别"
+                    android:textColorHint="@color/colorABABAB"
+                    android:textSize="@dimen/sp14"
+                    android:textColor="@color/color5B5C5C"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:layout_marginRight="@dimen/dp10" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/jingru1"/>
+
+            </LinearLayout>
+
+            <View style="@style/divider_1"
+                android:layout_height="@dimen/dp10"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp20">
+
+                <TextView
+                    android:layout_width="@dimen/dp60"
+                    android:layout_height="wrap_content"
+                    android:text="奖品描述"
+                    android:textColor="@color/color5B5C5C"
+                    android:textSize="@dimen/sp14"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp120"
+                    android:background="@android:color/transparent"
+                    android:hint="请输入奖品描述"
+                    android:textColorHint="@color/colorABABAB"
+                    android:textSize="@dimen/sp14"
+                    android:textColor="@color/color5B5C5C"
+                    android:inputType="text"
+                    android:gravity="top"
+                    android:layout_marginTop="@dimen/dp15"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp49"
+        android:gravity="center">
+
+        <TextView android:id="@+id/tvConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/queding1"
+            android:layout_marginLeft="@dimen/dp30"
+            android:layout_marginRight="@dimen/dp30"
+            android:layout_marginTop="@dimen/dp7"
+            android:layout_marginBottom="@dimen/dp7"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp14"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>

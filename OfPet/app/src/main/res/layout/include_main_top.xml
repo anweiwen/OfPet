@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp49">
+
+    <ImageView android:id="@+id/image_top_menu"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="match_parent"
+        android:src="@mipmap/cd"
+        android:scaleType="centerInside" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="@dimen/dp00"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dp7"
+        app:tabIndicatorColor="@color/colorFF8000"
+        app:tabIndicatorHeight="@dimen/dp3"
+        app:tabIndicatorFullWidth="false"
+        app:tabMode="fixed"
+        app:tabRippleColor="@android:color/transparent"
+        app:tabSelectedTextColor="@color/color323232"
+        app:tabTextAppearance="@style/TabLayout_Normal_2"
+        app:tabTextColor="@color/color999999"
+        app:tabIndicator="@drawable/shape_tab" />
+
+
+    <ImageView android:id="@+id/image_top_take"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="match_parent"
+        android:src="@mipmap/ps"
+        android:scaleType="centerInside" />
+
+</LinearLayout>
