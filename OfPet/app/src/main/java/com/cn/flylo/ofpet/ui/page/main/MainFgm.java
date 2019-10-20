@@ -66,7 +66,7 @@ public class MainFgm extends BaseControllerFragment {
             case R.id.ivHead:
                 StartTool.INSTANCE.start(act, PageEnum.Interested); // 感兴趣的内容
 
-                StartTool.INSTANCE.start(act, PageEnum.MineInfo);
+                StartTool.INSTANCE.start(act, PageEnum.Login);
                 break;
             case R.id.llNews:
                 StartTool.INSTANCE.start(act, PageEnum.News);

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    android:id="@+id/layout_item" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/di1"
+        android:paddingLeft="@dimen/dp30"
+        android:paddingRight="@dimen/dp30"
+        android:paddingTop="@dimen/dp25"
+        android:paddingBottom="@dimen/dp40"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            
+            <com.shehuan.niv.NiceImageView
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:src="@drawable/place_holder"
+                android:scaleType="centerInside"
+                android:layout_gravity="center_vertical"
+                app:is_circle="true"/>
+
+            <LinearLayout
+                android:layout_width="@dimen/dp00"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp8"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="BB"
+                        android:textColor="@color/color323232"
+                        android:lines="1"
+                        android:ellipsize="end"
+                        android:textSize="@dimen/sp18"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="粉丝 100"
+                        android:textColor="@color/color666666"
+                        android:textSize="@dimen/sp12"
+                        android:layout_marginLeft="@dimen/dp15"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="这个家伙很懒什么都没留下"
+                    android:textSize="@dimen/dp14"
+                    android:textColor="@color/color666666"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:lines="1"
+                    android:ellipsize="end"/>
+
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/llAttention"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/shape_2"
+                android:gravity="center"
+                android:paddingTop="@dimen/dp7"
+                android:paddingBottom="@dimen/dp7"
+                android:paddingLeft="@dimen/dp30"
+                android:paddingRight="@dimen/dp30">
+
+                <ImageView
+                    android:layout_width="@dimen/dp15"
+                    android:layout_height="@dimen/dp15"
+                    android:src="@mipmap/add"
+                    android:scaleType="centerInside" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="关注"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp12"
+                    android:layout_marginLeft="@dimen/dp5" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.cn.ql.frame.widget.NoScrollRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp35"
+            android:layout_marginLeft="@dimen/dp8"/>
+
+    </LinearLayout>
+
+</FrameLayout>

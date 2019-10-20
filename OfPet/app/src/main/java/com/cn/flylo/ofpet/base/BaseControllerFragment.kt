@@ -30,6 +30,9 @@ import kotlinx.android.synthetic.main.include_top.*
 abstract class BaseControllerFragment : BaseFragment() {
 
     override fun Init() {
+
+
+
         InitHttp()
         InitLoad()
     }

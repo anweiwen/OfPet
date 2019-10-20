@@ -25,7 +25,8 @@ class MyApplication : BaseApplication() {
         RefreshLoadTool.Init(android.R.color.transparent, R.color.color666666)
         //CrashReport.initCrashReport(getApplicationContext(), "17969df881", false)
 
-        initTencent()
+        // todo
+        //initTencent()
     }
 
     private fun initLeakCanary() {

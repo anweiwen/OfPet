@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">闲宠</string>
+
+    <string name="agreement"><u>服务和隐私条款</u></string>
 </resources>

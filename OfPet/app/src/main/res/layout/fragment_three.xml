@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/include_top_1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp100"
+            android:src="@drawable/place_holder"
+            android:layout_marginTop="@dimen/dp25"
+            android:scaleType="centerInside"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/color323232"
+            android:textSize="@dimen/sp18"
+            android:layout_marginTop="@dimen/dp25"/>
+
+        <View style="@style/divider_1"
+            android:layout_height="@dimen/dp1"
+            android:layout_marginTop="@dimen/dp25"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
+            android:background="@color/colorE3E3E3"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="登陆后开发者将获得以下权限"
+            android:textColor="@color/color666666"
+            android:textSize="@dimen/sp15"
+            android:layout_marginTop="@dimen/dp40"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dp15">
+
+            <com.shehuan.niv.NiceImageView
+                android:layout_width="@dimen/dp5"
+                android:layout_height="@dimen/dp5"
+                app:is_circle="true"
+                android:background="@color/colorFF8000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="获得你公开的信息（昵称、头像等）"
+                android:textColor="@color/color666666"
+                android:textSize="@dimen/sp14"
+                android:layout_marginLeft="@dimen/dp5"/>
+
+        </LinearLayout>
+
+        <Button android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:background="@drawable/shape_button"
+            android:layout_marginLeft="@dimen/dp37"
+            android:layout_marginRight="@dimen/dp37"
+            android:layout_marginTop="@dimen/dp25"
+            android:text="确认"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp18"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>

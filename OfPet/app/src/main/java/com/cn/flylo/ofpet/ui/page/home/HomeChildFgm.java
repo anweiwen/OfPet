@@ -11,6 +11,8 @@ import com.cn.flylo.ofpet.bean.Bean;
 import com.cn.flylo.ofpet.tool.event.EventTool;
 import com.cn.flylo.ofpet.tool.event.EventType;
 import com.cn.flylo.ofpet.ui.adapter.HomeAdapter;
+import com.cn.flylo.ofpet.ui.controller.PageEnum;
+import com.cn.flylo.ofpet.ui.controller.StartTool;
 import com.cn.ql.frame.listener.itemclick.ItemViewOnClickListener;
 import org.jetbrains.annotations.NotNull;
 
@@ -49,6 +51,7 @@ public class HomeChildFgm extends BaseControllerFragment {
                 }
                 switch (v.getId()){
                     case R.id.layout_item:
+                        StartTool.INSTANCE.start(act, PageEnum.Look);
                         break;
                 }
             }

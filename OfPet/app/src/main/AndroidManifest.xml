@@ -27,6 +27,8 @@
             android:theme="@style/AppTheme_Bg"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
+        <activity android:name=".ui.page.look.CommentAct"
+            android:theme="@style/DialogStyle" />
     </application>
 
 </manifest>

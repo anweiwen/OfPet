@@ -3,7 +3,7 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="AppTheme_7" parent="AppBaseTheme">
         <!--<item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/colorAccent</item>-->

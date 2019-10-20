@@ -1,8 +1,13 @@
 package com.cn.flylo.ofpet.ui.controller;
 
 
+import com.cn.flylo.ofpet.ui.page.account.ForgetFgm;
+import com.cn.flylo.ofpet.ui.page.account.LoginFgm;
+import com.cn.flylo.ofpet.ui.page.account.RegisterFgm;
+import com.cn.flylo.ofpet.ui.page.account.ThreeFgm;
 import com.cn.flylo.ofpet.ui.page.common.AgreementFgm;
 import com.cn.flylo.ofpet.ui.page.common.InterestedFgm;
+import com.cn.flylo.ofpet.ui.page.look.LookFgm;
 import com.cn.flylo.ofpet.ui.page.main.MainFgm;
 
 import com.cn.flylo.ofpet.ui.page.mine.*;
@@ -22,6 +27,11 @@ import org.jetbrains.annotations.NotNull;
  * @update: axw_an:2019/5/28:
  */
 public enum PageEnum {
+
+    Login(LoginFgm.class),
+    Register(RegisterFgm.class),
+    Forget(ForgetFgm.class),
+    Three(ThreeFgm.class),
 
     Main(MainFgm.class),
 
@@ -52,6 +62,8 @@ public enum PageEnum {
     SearchPeople(SearchPeopleFgm.class),
 
     Interested(InterestedFgm.class),
+
+    Look(LookFgm.class),
     ;
 
 

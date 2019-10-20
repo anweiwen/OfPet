@@ -13,6 +13,7 @@ import com.cn.flylo.ofpet.R;
 import com.cn.flylo.ofpet.base.BaseControllerFragment;
 import com.cn.flylo.ofpet.tool.event.EventTool;
 import com.cn.flylo.ofpet.tool.event.EventType;
+import com.cn.flylo.ofpet.ui.page.home.AttentionFgm;
 import com.cn.flylo.ofpet.ui.page.home.HomeChildFgm;
 import com.google.android.material.tabs.TabLayout;
 import com.tencent.liteav.demo.videorecord.TCVideoSettingActivity;
@@ -81,7 +82,7 @@ public class HomeFgm extends BaseControllerFragment {
         tabLayout.addTab(tabLayout.newTab().setTag(3).setText("直播"));
     }
 
-    private HomeChildFgm child_one;
+    private AttentionFgm attention;
     private HomeChildFgm child_two;
     private HomeChildFgm child_three;
     private HomeChildFgm child_four;
@@ -98,10 +99,10 @@ public class HomeFgm extends BaseControllerFragment {
             Bundle bundle = new Bundle();
             switch (i) {
                 case 0:
-                    if (child_one == null) {
-                        child_one = new HomeChildFgm();
+                    if (attention == null) {
+                        attention = new AttentionFgm();
                     }
-                    fgm = child_one;
+                    fgm = attention;
                     break;
                 case 1:
                     if (child_two == null) {

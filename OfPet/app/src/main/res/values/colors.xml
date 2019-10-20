@@ -7,6 +7,7 @@
     <color name="white">#FFFFFF</color>
     <color name="black95">#0D000000</color>
     <color name="black24">#3D000000</color>
+    <color name="black50">#80000000</color>
 
     <color name="colorDDDDDD">#DDDDDD</color>
     <color name="color666666">#666666</color>
@@ -43,10 +44,19 @@
     <color name="color282828">#282828</color>
     <color name="colorCECECE">#CECECE</color>
     <color name="color292929">#292929</color>
+    <color name="color3F3F3F">#3F3F3F</color>
+    <color name="colorE3E3E3">#E3E3E3</color>
+    <color name="colorF7F7F7">#F7F7F7</color>
+    <color name="color94918F">#94918F</color>
+    <color name="color6D6A6A">#6D6A6A</color>
+
+    <color name="color28282A">#28282A</color>
 
     <color name="color5F5F5F_6">#0F5F5F5F</color>
 
     <color name="colorFF8000">#FF8000</color>
     <color name="colorFF8000_20">#33FF8000</color>
+    <color name="colorFD7975">#FD7975</color>
+    <color name="colorFF1F14">#FF1F14</color>
 
 </resources>
