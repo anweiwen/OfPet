@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+//apply plugin: 'android-apt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -82,4 +84,5 @@ dependencies {
 
 //    implementation project(path: ':Library:LiteAv:player')
     implementation project(':Library:LiteAv:LiteAv')
+
 }

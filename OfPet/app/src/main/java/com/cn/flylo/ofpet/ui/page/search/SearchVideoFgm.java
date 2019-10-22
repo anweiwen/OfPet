@@ -9,6 +9,7 @@ import butterknife.OnClick;
 import com.cn.flylo.ofpet.R;
 import com.cn.flylo.ofpet.base.BaseControllerFragment;
 import com.cn.flylo.ofpet.bean.Bean;
+import com.cn.flylo.ofpet.bean.Video;
 import com.cn.flylo.ofpet.ui.adapter.HomeAdapter;
 import com.cn.ql.frame.listener.itemclick.ItemViewOnClickListener;
 import org.jetbrains.annotations.NotNull;
@@ -47,7 +48,7 @@ public class SearchVideoFgm extends BaseControllerFragment {
     }
 
     private HomeAdapter adapter;
-    private List<Bean> list = new ArrayList();
+    private List<Video> list = new ArrayList();
     private void initRecycler(){
         GridLayoutManager linearLayoutManager = new GridLayoutManager(act, 2);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -55,9 +56,9 @@ public class SearchVideoFgm extends BaseControllerFragment {
             adapter = new HomeAdapter(list);
         }
         recyclerView.setAdapter(adapter);
-        adapter.setItemViewOnClickListener(new ItemViewOnClickListener<Bean>() {
+        adapter.setItemViewOnClickListener(new ItemViewOnClickListener<Video>() {
             @Override
-            public void onClick(@NotNull View v, Bean data, int position) {
+            public void onClick(@NotNull View v, Video data, int position) {
                 if (data == null){
                     return;
                 }
@@ -69,7 +70,7 @@ public class SearchVideoFgm extends BaseControllerFragment {
         });
 
         for (int i = 0; i < 10; i++){
-            list.add(new Bean());
+            list.add(new Video());
         }
         adapter.notifyDataSetChanged();
     }

@@ -2,7 +2,10 @@ package com.cn.flylo.ofpet.mgr
 
 import com.cn.flylo.liteav.InitTencent
 import com.cn.flylo.ofpet.R
+import com.cn.flylo.ofpet.utils.Constants
 import com.cn.ql.frame.mgr.BaseApplication
+import com.cn.ql.frame.tool.DensityTool
+import com.cn.ql.frame.tool.DisplayTool
 import com.cn.ql.frame.tool.log.FlyLog
 import com.cn.ql.frame.tool.refresh.RefreshLoadTool
 import com.squareup.leakcanary.LeakCanary
@@ -26,7 +29,9 @@ class MyApplication : BaseApplication() {
         //CrashReport.initCrashReport(getApplicationContext(), "17969df881", false)
 
         // todo
-        //initTencent()
+        initTencent()
+
+        Constants.staWidth = (DisplayTool.getScreenWidth(this) - DensityTool.dp2px(this, 15f))  / 2
     }
 
     private fun initLeakCanary() {

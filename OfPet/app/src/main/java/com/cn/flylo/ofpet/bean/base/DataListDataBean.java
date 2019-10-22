@@ -10,11 +10,11 @@ import java.util.List;
  * @update: axw_an:2019/7/11:
  */
 public class DataListDataBean<T> {
-    public int totalRow;
-    public int pageNumber;
+    public int totalCount;
     public boolean firstPage;
     public boolean lastPage;
     public int totalPage;
-    public int pageSize;
-    public List<T> list;
+    public int page;
+    public int size;
+    public List<T> content;
 }

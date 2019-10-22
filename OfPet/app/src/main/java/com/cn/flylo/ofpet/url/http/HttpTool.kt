@@ -1,10 +1,17 @@
 package com.cn.flylo.ofpet.url.http
 
 import androidx.fragment.app.FragmentActivity
+import com.cn.flylo.ofpet.bean.Account
 import com.cn.flylo.ofpet.url.inter.AccountInterface
+import com.cn.flylo.ofpet.url.inter.CommonInterface
+import com.cn.flylo.ofpet.url.inter.MineInterface
+import com.cn.flylo.ofpet.url.inter.VideoInterface
 import com.cn.flylo.ofpet.url.listener.HttpRequestListener
 import com.cn.flylo.ofpet.url.listener.HttpResultRequestListner
 import com.cn.flylo.ofpet.url.tool.AccountTool
+import com.cn.flylo.ofpet.url.tool.CommonTool
+import com.cn.flylo.ofpet.url.tool.MineTool
+import com.cn.flylo.ofpet.url.tool.VideoTool
 import com.cn.ql.frame.net.HttpResultListener
 import com.cn.ql.frame.net.RetrofitFactory
 import com.cn.ql.frame.net.RetrofitTool.POST
@@ -25,7 +32,9 @@ import io.reactivex.annotations.NonNull
 class HttpTool : HttpRequestListener {
 
     companion object {
-        var BaseUrl = "http://huayanchuang.xyz/aywz/" // 新https://huayanchuang.xyz/aywz/ 旧：https://kf.gdpinganyaoye.com/aywz/
+        var BaseUrl =
+            "http://129.204.108.149:8080/"
+
     }
 
     private var activity: FragmentActivity? = null
@@ -61,7 +70,23 @@ class HttpTool : HttpRequestListener {
     }
 
     fun addHeader(){
-        RetrofitFactory.header.put("token", "")
+        RetrofitFactory.header.put("token", "${getToken()}")
+        //RetrofitFactory.header.put("userId", "${getUserId()}")
+    }
+
+    fun getToken(): String?{
+        var account = Account.instance
+        if(account == null){
+            return ""
+        }
+        var token = account.token
+        return token
+    }
+
+    fun getUserId(): Int?{
+        var account = Account.instance
+        var userId = account.userId
+        return userId
     }
 
     /**
@@ -77,6 +102,24 @@ class HttpTool : HttpRequestListener {
     fun getAccount(): AccountTool {
         var inter = RetrofitFactory.getInstance(BaseUrl, AccountInterface::class.java)
         var tool = AccountTool(inter!!, this)
+        return tool
+    }
+
+    fun getCommon(): CommonTool {
+        var inter = RetrofitFactory.getInstance(BaseUrl, CommonInterface::class.java)
+        var tool = CommonTool(inter!!, this)
+        return tool
+    }
+
+    fun getVideo(): VideoTool {
+        var inter = RetrofitFactory.getInstance(BaseUrl, VideoInterface::class.java)
+        var tool = VideoTool(inter!!, this)
+        return tool
+    }
+
+    fun getMine(): MineTool {
+        var inter = RetrofitFactory.getInstance(BaseUrl, MineInterface::class.java)
+        var tool = MineTool(inter!!, this)
         return tool
     }
 }

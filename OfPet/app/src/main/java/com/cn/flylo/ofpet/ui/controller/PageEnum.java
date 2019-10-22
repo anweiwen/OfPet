@@ -7,6 +7,7 @@ import com.cn.flylo.ofpet.ui.page.account.RegisterFgm;
 import com.cn.flylo.ofpet.ui.page.account.ThreeFgm;
 import com.cn.flylo.ofpet.ui.page.common.AgreementFgm;
 import com.cn.flylo.ofpet.ui.page.common.InterestedFgm;
+import com.cn.flylo.ofpet.ui.page.look.CommentFgm;
 import com.cn.flylo.ofpet.ui.page.look.LookFgm;
 import com.cn.flylo.ofpet.ui.page.main.MainFgm;
 
@@ -64,6 +65,7 @@ public enum PageEnum {
     Interested(InterestedFgm.class),
 
     Look(LookFgm.class),
+    Comment(CommentFgm.class),
     ;
 
 

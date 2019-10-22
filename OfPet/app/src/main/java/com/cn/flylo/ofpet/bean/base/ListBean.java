@@ -10,5 +10,5 @@ import java.util.List;
  * @update: axw_an:2019/7/12:
  */
 public class ListBean<T>  extends BaseBean {
-    public List<T> data;
+    public List<T> result;
 }

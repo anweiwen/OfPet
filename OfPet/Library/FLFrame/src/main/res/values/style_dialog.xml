@@ -41,4 +41,11 @@
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
 
+    <style name="BottomDialogStyle" parent="DialogStyle">
+        <item name="android:activityOpenEnterAnimation">@anim/in_bottom</item>
+        <item name="android:activityOpenExitAnimation">@anim/out_bottom</item>
+        <item name="android:activityCloseEnterAnimation">@anim/in_top</item>
+        <item name="android:activityCloseExitAnimation">@anim/out_top</item>
+    </style>
+
 </resources>

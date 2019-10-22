@@ -10,9 +10,20 @@ package com.cn.flylo.ofpet.url.api
 class UrlId {
 
     companion object {
-        const val login = 1
-        const val getCode = 2
-        const val register = 3
+        const val pLogin = 1
+        const val sendVcode = 2
+        const val pResgist = 3
+        const val resetPwd = 4
+
+        const val getAgree = 101
+
+        const val getPopularVideo = 201
+        const val getVideo = 202
+        const val getVideoDisList = 203
+        const val saveInfoDispra = 204
+        const val saveVideoDiscuss = 205
+        const val saveChildDis = 206
+        const val videoPraise = 207
     }
 
 }

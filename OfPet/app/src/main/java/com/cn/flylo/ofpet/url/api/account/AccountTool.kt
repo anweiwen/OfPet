@@ -4,6 +4,7 @@ import com.cn.flylo.ofpet.url.api.UrlId
 import com.cn.flylo.ofpet.url.inter.AccountInterface
 import com.cn.flylo.ofpet.url.listener.HttpRequestListener
 import com.cn.ql.frame.tool.SystemTool
+import com.cn.ql.frame.utils.Utils
 
 /**
  * @author axw_an
@@ -24,25 +25,34 @@ class AccountTool {
         this.listener = listener
     }
 
-    fun login(mobile: String, password: String, code: String, type: Int) : AccountTool {
-        var mobile_type = SystemTool.getSystemModel();
-        var observable = inter?.login(mobile, password, code, type, mobile_type)
-        listener?.doPost(UrlId.login, observable!!)
+    fun pLogin(userName: String, password: String) : AccountTool {
+        var device = "android"
+        var deviceTag = SystemTool.getIMEI(Utils.getContext())
+        var observable = inter?.pLogin(userName, password, device, deviceTag)
+        listener?.doPost(UrlId.pLogin, observable!!)
         return this
     }
 
     /**
-     * @param code 1表示注册 2找回密码 3验证码登录 4绑定手机号码
+     * @param vcodeType （1注册 4找回密码 8绑定手机）
      */
-    fun getCode(mobile: String, type: Int) : AccountTool {
-        var observable = inter?.getCode(mobile, type)
-        listener?.doPost(UrlId.getCode, observable!!)
+    fun sendVcode(iphone: String, vcodeType: Int) : AccountTool {
+        var observable = inter?.sendVcode(iphone, vcodeType)
+        listener?.doPost(UrlId.sendVcode, observable!!)
         return this
     }
 
-    fun register(mobile: String, code: String, password: String, nickname: String) : AccountTool {
-        var observable = inter?.register(1, mobile, code, password, password, nickname)
-        listener?.doPost(UrlId.register, observable!!)
+    fun pResgist(userName: String, vercoed: String, password: String) : AccountTool {
+        var device = "android"
+        var deviceTag = SystemTool.getIMEI(Utils.getContext())
+        var observable = inter?.pResgist(userName, vercoed, password, device, deviceTag)
+        listener?.doPost(UrlId.pResgist, observable!!)
+        return this
+    }
+
+    fun resetPwd(userName: String, vercoed: String, password: String) : AccountTool {
+        var observable = inter?.resetPwd(userName, vercoed, password)
+        listener?.doPost(UrlId.resetPwd, observable!!)
         return this
     }
 

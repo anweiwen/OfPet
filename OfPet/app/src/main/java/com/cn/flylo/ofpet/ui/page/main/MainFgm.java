@@ -12,6 +12,7 @@ import com.cn.flylo.ofpet.R;
 import com.cn.flylo.ofpet.base.BaseControllerFragment;
 
 import butterknife.BindView;
+import com.cn.flylo.ofpet.bean.Account;
 import com.cn.flylo.ofpet.tool.event.EventType;
 import com.cn.flylo.ofpet.ui.controller.PageEnum;
 import com.cn.flylo.ofpet.ui.controller.StartTool;
@@ -40,6 +41,9 @@ public class MainFgm extends BaseControllerFragment {
         ViewClick(flHome);
 
         showAgreement();
+
+        // todo
+        //Account.setInstance(null);
     }
 
     private void showAgreement(){

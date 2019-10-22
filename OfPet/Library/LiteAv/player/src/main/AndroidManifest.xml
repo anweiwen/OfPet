@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tencent.liteav.demo.player">
 
-    <application android:theme="@style/AppTheme">
+    <application >
         <activity
             android:name=".superplayer.SuperPlayerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

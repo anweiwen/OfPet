@@ -12,33 +12,40 @@ import retrofit2.http.*
  * @description:
  * @update: axw_an:2019/5/18:
  */
-interface AccountInterface{
+interface AccountInterface {
 
     @FormUrlEncoded
-    @POST(AccountApi.login)
-    fun login(
-        @Field("mobile") mobile: String,
+    @POST(AccountApi.pLogin)
+    fun pLogin(
+        @Field("userName") userName: String,
         @Field("password") password: String,
-        @Field("code") code: String,
-        @Field("type") type: Int,
-        @Field("phone_type") phone_type: String
-    ): Observable<JsonElement>
-
-    @GET(AccountApi.getCode)
-    fun getCode(
-            @Query("mobile") mobile: String,
-            @Query("type") type: Int
+        @Field("device") device: String,
+        @Field("deviceTag") deviceTag: String?
     ): Observable<JsonElement>
 
     @FormUrlEncoded
-    @POST(AccountApi.register)
-    fun register(
-            @Field("type") type: Int,
-            @Field("mobile") mobile: String,
-            @Field("code") code: String,
-            @Field("password") password: String,
-            @Field("repwd") repwd: String,
-            @Field("nickname") nickname: String
+    @POST(AccountApi.sendVcode)
+    fun sendVcode(
+        @Field("iphone") iphone: String,
+        @Field("vcodeType") vcodeType: Int
+    ): Observable<JsonElement>
+
+    @FormUrlEncoded
+    @POST(AccountApi.pResgist)
+    fun pResgist(
+        @Field("userName") userName: String,
+        @Field("vercoed") vercoed: String,
+        @Field("password") password: String,
+        @Field("device") device: String,
+        @Field("deviceTag") deviceTag: String?
+    ): Observable<JsonElement>
+
+    @FormUrlEncoded
+    @POST(AccountApi.resetPwd)
+    fun resetPwd(
+        @Field("iphone") iphone: String,
+        @Field("vercoed") vercoed: String,
+        @Field("password") password: String
     ): Observable<JsonElement>
 
 }

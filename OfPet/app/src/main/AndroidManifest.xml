@@ -28,7 +28,8 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity android:name=".ui.page.look.CommentAct"
-            android:theme="@style/DialogStyle" />
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/BottomDialogStyle" />
     </application>
 
 </manifest>

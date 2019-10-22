@@ -15,6 +15,7 @@
         android:layout_marginTop="@dimen/dp10">
         
         <com.shehuan.niv.NiceImageView
+            android:id="@+id/ivHead"
             android:layout_width="@dimen/dp32"
             android:layout_height="@dimen/dp32"
             android:src="@drawable/place_holder"
@@ -27,7 +28,7 @@
             android:orientation="vertical"
             android:layout_marginLeft="@dimen/dp15">
 
-            <TextView
+            <TextView android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="77"
@@ -40,7 +41,7 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/dp13">
 
-                <TextView
+                <TextView android:id="@+id/tvContent"
                     android:layout_width="@dimen/dp00"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -49,19 +50,19 @@
                     android:textSize="@dimen/sp15"
                     android:layout_marginRight="@dimen/dp15"/>
 
-                <LinearLayout
+                <LinearLayout android:id="@+id/llZan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center">
 
-                    <ImageView
+                    <ImageView android:id="@+id/ivZan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/selector_like"
                         android:scaleType="centerInside"/>
 
-                    <TextView
+                    <TextView android:id="@+id/tvZan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="00"
@@ -72,74 +73,10 @@
                 </LinearLayout>
             </LinearLayout>
 
-
-            <LinearLayout
+            <com.cn.ql.frame.widget.NoScrollRecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/dp10">
-
-                <com.shehuan.niv.NiceImageView
-                    android:layout_width="@dimen/dp20"
-                    android:layout_height="@dimen/dp20"
-                    android:src="@drawable/place_holder"
-                    android:scaleType="centerCrop"
-                    app:is_circle="true"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="@dimen/dp15">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="77"
-                        android:textColor="@color/color94918F"
-                        android:textSize="@dimen/sp13"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="@dimen/dp13">
-
-                        <TextView
-                            android:layout_width="@dimen/dp00"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:text="狗的主人还发朋友圈狗的主人还发朋友圈狗的主人还发朋"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/sp15"
-                            android:layout_marginRight="@dimen/dp15"/>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:gravity="center">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/selector_like"
-                                android:scaleType="centerInside"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="00"
-                                android:textSize="@dimen/sp13"
-                                android:textColor="@color/color6D6A6A"
-                                android:layout_marginTop="@dimen/dp4"/>
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
         

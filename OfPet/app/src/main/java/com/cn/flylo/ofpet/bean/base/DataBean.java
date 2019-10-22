@@ -8,5 +8,5 @@ package com.cn.flylo.ofpet.bean.base;
  * @update: axw_an:2019/5/18:
  */
 public class DataBean<T> extends BaseBean {
-    public T data;
+    public T result;
 }

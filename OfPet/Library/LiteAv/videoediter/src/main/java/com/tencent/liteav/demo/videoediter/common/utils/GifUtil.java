@@ -2,7 +2,6 @@ package com.tencent.liteav.demo.videoediter.common.utils;
 
 import android.graphics.Bitmap;
 
-import com.bumptech.glide.gifencoder.AnimatedGifEncoder;
 import com.tencent.liteav.basic.log.TXCLog;
 
 import java.io.ByteArrayOutputStream;
@@ -21,16 +20,19 @@ public class GifUtil {
             return null;
         }
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        AnimatedGifEncoder gifEncoder = new AnimatedGifEncoder();
-        gifEncoder.start(baos);
-        gifEncoder.setRepeat(0);
-        gifEncoder.setDelay(delayMs);
+
+//        AnimatedGifEncoder gifEncoder = new AnimatedGifEncoder();
+//        gifEncoder.start(baos);
+//        gifEncoder.setRepeat(0);
+//        gifEncoder.setDelay(delayMs);
+
         TXCLog.i(TAG, "start make gif");
         for(Bitmap bitmap : bitmapList){
             Bitmap resizeBitmap = TCEditerUtil.zoomImg(bitmap, width, height);
-            gifEncoder.addFrame(resizeBitmap);
+            //gifEncoder.addFrame(resizeBitmap);
         }
-        gifEncoder.finish();
+        //gifEncoder.finish();
+
         TXCLog.i(TAG, "finish make gif");
         FileOutputStream fos = new FileOutputStream(filePath);
         baos.writeTo(fos);

@@ -97,6 +97,7 @@ public class HomeFgm extends BaseControllerFragment {
         public Fragment getItem(int i) {
             BaseControllerFragment fgm = null;
             Bundle bundle = new Bundle();
+            int type = 0;
             switch (i) {
                 case 0:
                     if (attention == null) {
@@ -109,6 +110,7 @@ public class HomeFgm extends BaseControllerFragment {
                         child_two = new HomeChildFgm();
                     }
                     fgm = child_two;
+                    type = 2;
                     break;
                 case 2:
                     if (child_three == null) {
@@ -123,6 +125,7 @@ public class HomeFgm extends BaseControllerFragment {
                     fgm = child_four;
                     break;
             }
+            bundle.putInt("type", type);
             fgm.setArguments(bundle);
             return fgm;
         }

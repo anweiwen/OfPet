@@ -11,7 +11,7 @@ import com.cn.flylo.ofpet.url.http.HttpTool;
  */
 public class Result {
 
-    public static int success = 1;
+    public static int success = 200;
     public static int pageSize = 10;
 
 

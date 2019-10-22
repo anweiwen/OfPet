@@ -9,5 +9,5 @@ package com.cn.flylo.ofpet.bean.base;
  */
 public class BaseBean {
     public int code;
-    public String desc;
+    public String description;
 }

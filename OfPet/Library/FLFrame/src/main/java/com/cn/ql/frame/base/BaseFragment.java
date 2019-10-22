@@ -121,6 +121,15 @@ public abstract class BaseFragment extends RxFragment implements BaseInterface {
         }
     }
 
+    protected void showKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) view.getContext()
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            view.requestFocus();
+            imm.showSoftInput(view, 0);
+        }
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode==Activity.RESULT_OK) {

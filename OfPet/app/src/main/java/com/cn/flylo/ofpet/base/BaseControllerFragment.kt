@@ -13,11 +13,13 @@ import com.cn.ql.frame.base.BaseFragment
 import com.cn.ql.frame.net.HttpResultListener
 import com.cn.ql.frame.tool.BarTool
 import com.cn.ql.frame.tool.gson.GsonTool
+import com.cn.ql.frame.tool.refresh.RefreshLoadListener
 import com.cn.ql.frame.tool.refresh.RefreshLoadTool
 import com.cn.ql.frame.utils.StringUtils
 import com.google.android.material.appbar.AppBarLayout
 import com.google.gson.JsonElement
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.api.RefreshLayout
 import kotlinx.android.synthetic.main.include_top.*
 
 /**
@@ -30,9 +32,6 @@ import kotlinx.android.synthetic.main.include_top.*
 abstract class BaseControllerFragment : BaseFragment() {
 
     override fun Init() {
-
-
-
         InitHttp()
         InitLoad()
     }
@@ -47,25 +46,40 @@ abstract class BaseControllerFragment : BaseFragment() {
         }
     }
 
-    open fun setTopLayout(layout_tab_top: LinearLayout){
-        val lp = layout_tab_top.getLayoutParams() as LinearLayout.LayoutParams
-        lp.topMargin = BarTool.getStatusBarHeight(act)
+    open fun InitRefreshLayout(){
+        InitRefreshLayout(true)
     }
 
+    open var refresh_layout: SmartRefreshLayout? = null
+    open fun InitRefreshLayout(load: Boolean){
+        var refresh_view = view.findViewById<View>(R.id.refresh_layout)
+        if (refresh_view != null){
+            refresh_layout = refresh_view as SmartRefreshLayout
+            if (refresh_layout != null){
+                RefreshLoadTool.InitRefreshLoad(refresh_layout, load, object : RefreshLoadListener {
+                    override fun onRefresh(refreshlayout: RefreshLayout?) {
+                        refresh(refresh_layout)
+                    }
 
-    open fun setTopLayoutFrameLayout(layout_tab_top: LinearLayout){
-        val lp = layout_tab_top.getLayoutParams() as FrameLayout.LayoutParams
-        lp.topMargin = BarTool.getStatusBarHeight(act)
+                    override fun onLoadmore(refreshlayout: RefreshLayout?) {
+                        load(refresh_layout)
+                    }
+
+                })
+            }
+        }
     }
 
-    open fun setTopFrameLayout(layout_tab_top: LinearLayout){
-        val lp = layout_tab_top.getLayoutParams() as AppBarLayout.LayoutParams
-        lp.topMargin = BarTool.getStatusBarHeight(act)
+    open fun refresh(refreshlayout: SmartRefreshLayout?){
+        if (refresh_layout == null){
+            refresh_layout = refreshlayout
+        }
     }
 
-    open fun setTopLayout(layout_tab_top: FrameLayout){
-        val lp = layout_tab_top.getLayoutParams() as LinearLayout.LayoutParams
-        lp.topMargin = BarTool.getStatusBarHeight(act)
+    open fun load(refreshlayout: SmartRefreshLayout?){
+        if (refresh_layout == null){
+            refresh_layout = refreshlayout
+        }
     }
 
     // todo 网络请求
@@ -107,8 +121,8 @@ abstract class BaseControllerFragment : BaseFragment() {
             }
             // todo 其他地方登陆了
             if (code == 2){
-                showNoLogin()
-                return
+//                showNoLogin()
+//                return
             }
             onNetSuccess(urlId, value, value.toString(), baseBean, code == Result.success)
         }
@@ -241,6 +255,7 @@ abstract class BaseControllerFragment : BaseFragment() {
     open fun onRightClick(){}
 
     protected fun finish(){
+        hideKeyboard()
         activity!!.finish()
     }
 

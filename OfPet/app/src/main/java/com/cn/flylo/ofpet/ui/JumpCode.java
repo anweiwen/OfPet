@@ -13,4 +13,9 @@ public class JumpCode {
      */
     public static final int a = 0x01;
 
+    /**
+     * 评论
+     */
+    public static final int comment = 0x02;
+
 }

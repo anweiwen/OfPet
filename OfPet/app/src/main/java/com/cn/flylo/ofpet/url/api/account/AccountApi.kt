@@ -12,22 +12,22 @@ interface AccountApi {
         /**
          * 登录
          */
-        const val login = "api/user/login"
+        const val pLogin = "pets/user/pLogin"
 
         /**
          * 获取验证码
          */
-        const val getCode = "api/user/getCode"
+        const val sendVcode = "pets/user/sendVcode"
 
         /**
          * 注册接口
          */
-        const val register = "api/user/register"
+        const val pResgist = "pets/user/pResgist"
 
         /**
          * 找回密码
          */
-        const val findPwd = "api/doctor/findPwd"
+        const val resetPwd = "pets/user/resetPwd"
 
         /**
          * 退出登录

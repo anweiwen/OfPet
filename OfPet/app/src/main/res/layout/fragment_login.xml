@@ -51,19 +51,19 @@
 
             </LinearLayout>
 
-            <EditText
+            <EditText android:id="@+id/etMobile"
                 android:layout_width="@dimen/dp00"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:layout_marginLeft="@dimen/dp10"
                 android:inputType="phone"
-                android:hint="请填写手机号"
+                android:hint="请输入手机号"
                 android:textColorHint="@color/color999999"
                 android:textSize="@dimen/sp15"
                 android:textColor="@color/color323232"/>
 
-            <ImageView
+            <ImageView android:id="@+id/ivDeleteMobile"
                 android:layout_width="@dimen/dp40"
                 android:layout_height="match_parent"
                 android:src="@mipmap/guangbi1"
@@ -82,7 +82,7 @@
             android:layout_marginTop="@dimen/dp10">
 
 
-            <EditText
+            <EditText android:id="@+id/etPassword"
                 android:layout_width="@dimen/dp00"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
@@ -94,7 +94,7 @@
                 android:textSize="@dimen/sp15"
                 android:textColor="@color/color323232"/>
 
-            <ImageView
+            <ImageView android:id="@+id/ivDeletePassword"
                 android:layout_width="@dimen/dp40"
                 android:layout_height="match_parent"
                 android:src="@mipmap/guangbi1"

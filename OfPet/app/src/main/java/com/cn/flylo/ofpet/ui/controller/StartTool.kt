@@ -56,6 +56,25 @@ object StartTool {
         // 跳转动画
         LeftToRight(activity)
     }
+
+
+    /**
+     * 跳转页面
+     * @param activity
+     * @param pageEnum
+     */
+    fun startBotttom(activity: Activity?, pageEnum: PageEnum, data: Bundle?, code: Int) {
+        var data = data
+        if (data == null) {
+            data = Bundle()
+        }
+        data.putSerializable("pageType", pageEnum)
+        StartActTool.Start(activity!!, ControllerActivity::class.java, data, code)
+
+        // 跳转动画
+        TopToBottom(activity)
+    }
+
     // 右进左出
     fun LeftToRight(act: Activity) {
         Anima(act, R.anim.in_from_right, R.anim.out_from_left)

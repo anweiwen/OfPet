@@ -8,21 +8,31 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/ic_launcher">
+        android:background="@color/black">
 
+        <com.tencent.liteav.demo.play.SuperPlayerView
+            android:id="@+id/superPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView android:id="@+id/ivPause"
+            android:layout_width="@dimen/dp120"
+            android:layout_height="@dimen/dp120"
+            android:layout_gravity="center"
+            android:scaleType="centerInside" />
 
     </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical" >
 
         <com.cn.ql.frame.widget.BarView
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <ImageView
+        <ImageView android:id="@+id/ivBack"
             android:layout_width="@dimen/dp50"
             android:layout_height="@dimen/dp50"
             android:src="@drawable/ic_back"
@@ -42,14 +52,14 @@
                 android:orientation="vertical"
                 android:layout_margin="@dimen/dp12">
 
-                <TextView
+                <TextView android:id="@+id/tvName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="/@闲宠"
                     android:textSize="@dimen/sp17"
                     android:textColor="@color/white" />
 
-                <TextView
+                <TextView android:id="@+id/tvContent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="无论 无论无论无论无论无论无论无论无论"
@@ -60,7 +70,7 @@
 
             </LinearLayout>
 
-            <LinearLayout android:id="@+id/llComment"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -72,13 +82,15 @@
                     android:layout_height="wrap_content">
 
                     <com.shehuan.niv.NiceImageView
+                        android:id="@+id/ivHead"
                         android:layout_width="@dimen/dp49"
                         android:layout_height="@dimen/dp49"
                         android:src="@drawable/place_holder"
                         app:is_circle="true"
-                        android:layout_marginBottom="@dimen/dp10" />
+                        android:layout_marginBottom="@dimen/dp10"
+                        android:scaleType="centerCrop"/>
 
-                    <ImageView
+                    <ImageView android:id="@+id/ivAdd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
@@ -94,13 +106,14 @@
                     android:gravity="center">
 
                     <com.shehuan.niv.NiceImageView
+                        android:id="@+id/ivZan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/selector_love"
                         android:layout_marginBottom="@dimen/dp10"
                         android:scaleType="centerInside" />
 
-                    <TextView
+                    <TextView android:id="@+id/tvZan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="00"
@@ -110,7 +123,7 @@
 
                 </LinearLayout>
 
-                <LinearLayout
+                <LinearLayout android:id="@+id/llComment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -124,7 +137,7 @@
                         android:layout_marginBottom="@dimen/dp10"
                         android:scaleType="centerInside" />
 
-                    <TextView
+                    <TextView android:id="@+id/tvComment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="00"
@@ -148,7 +161,7 @@
                         android:layout_marginBottom="@dimen/dp10"
                         android:scaleType="centerInside" />
 
-                    <TextView
+                    <TextView android:id="@+id/tvShare"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="00"
@@ -173,7 +186,7 @@
                         android:layout_marginBottom="@dimen/dp10"
                         android:scaleType="centerInside" />
 
-                    <TextView
+                    <TextView android:id="@+id/tvSee"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="00"
@@ -187,7 +200,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <LinearLayout android:id="@+id/llEtComment"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp50"
             android:background="@color/black50"

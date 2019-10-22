@@ -11,4 +11,5 @@ include ':app',
         ':Library:LiteAv:videoediter',
         ':Library:LiteAv:videojoiner',
         ':Library:LiteAv:videorecorder',
-        ':Library:LiteAv:videouploader'
+        ':Library:LiteAv:videouploader',
+        ':Library:LiteAv:libsuperplayer'

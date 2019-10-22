@@ -89,7 +89,11 @@ class ControllerActivity : BaseControllerActivity() {
     override fun finish() {
         super.finish()
         // 退出动画
-        StartTool.RightToLeft(this)
+        if (pageEnum == PageEnum.Comment){
+            StartTool.BottomToTop(this)
+        }else {
+            StartTool.RightToLeft(this)
+        }
     }
 
     override fun EventMessage(type: Int, data: Bundle?) {

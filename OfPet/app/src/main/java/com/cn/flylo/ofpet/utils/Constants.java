@@ -15,4 +15,5 @@ public class Constants {
 
     public static String[] permission_camera  = {Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
+    public static int staWidth = 0;
 }

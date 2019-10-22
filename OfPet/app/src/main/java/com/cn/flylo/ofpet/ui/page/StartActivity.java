@@ -4,10 +4,13 @@ import android.os.CountDownTimer;
 
 import com.cn.flylo.ofpet.R;
 import com.cn.flylo.ofpet.base.BaseControllerActivity;
+import com.cn.flylo.ofpet.bean.Account;
 import com.cn.flylo.ofpet.tool.SaveTool;
 import com.cn.flylo.ofpet.ui.controller.PageEnum;
 import com.cn.flylo.ofpet.ui.controller.StartTool;
 import com.cn.ql.frame.tool.SystemTool;
+import com.cn.ql.frame.tool.gson.GsonTool;
+import com.cn.ql.frame.utils.StringUtils;
 
 /**
  * @author axw_an
@@ -31,12 +34,13 @@ public class StartActivity extends BaseControllerActivity {
         initTimer();
     }
 
-    private void initTimer(){
+    private void initTimer() {
         CountDownTimer timer = new CountDownTimer(1 * 1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
             }
+
             @Override
             public void onFinish() {
                 toOther();
@@ -44,24 +48,20 @@ public class StartActivity extends BaseControllerActivity {
         }.start();
     }
 
-    private void toOther(){
+    private void toOther() {
         int version = saveTool.getVersion();
         int thisVersion = SystemTool.INSTANCE.getLocalVersion(this);
 //        if (thisVersion > version){
 //            StartTool.INSTANCE.start(StartActivity.this, PageEnum.Guide);
 //        }else {
-//            String userValue = saveTool.getUser();
-//            if (StringUtils.isEmpty(userValue)) {
-//                StartTool.INSTANCE.start(StartActivity.this, PageEnum.SelectLoginRegister);
-//            } else {
-//                User user = GsonTool.INSTANCE.getBean(userValue, User.class);
-//                if (user != null) {
-//                    User.setInstance(user);
-//                    StartTool.INSTANCE.start(StartActivity.this, PageEnum.Main);
-//                } else {
-//                    StartTool.INSTANCE.start(StartActivity.this, PageEnum.SelectLoginRegister);
-//                }
-//            }
+        String userValue = saveTool.getUser();
+        if (StringUtils.isEmpty(userValue)) {
+        } else {
+            Account account = GsonTool.INSTANCE.getBean(userValue, Account.class);
+            if (account != null) {
+                Account.setInstance(account);
+            }
+        }
 //        }
 
         StartTool.INSTANCE.start(StartActivity.this, PageEnum.Main);
