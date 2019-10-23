@@ -201,6 +201,9 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
         }
         mMinDuration = intent.getIntExtra(TCConstants.RECORD_CONFIG_MIN_DURATION, 5 * 1000);
         mMaxDuration = intent.getIntExtra(TCConstants.RECORD_CONFIG_MAX_DURATION, 57 * 1000);
+        mMaxDuration = 57 * 1000;
+
+
         mAspectRatio = intent.getIntExtra(TCConstants.RECORD_CONFIG_ASPECT_RATIO, TXRecordCommon.VIDEO_ASPECT_RATIO_9_16);
         mRecommendQuality = intent.getIntExtra(TCConstants.RECORD_CONFIG_RECOMMEND_QUALITY, -1);
         mNeedEditer = intent.getBooleanExtra(TCConstants.RECORD_CONFIG_NEED_EDITER, true);
@@ -970,13 +973,12 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
             isSelected = false;
             mRecordProgressView.deleteLast();
             mTXCameraRecord.getPartsManager().deleteLastPart();
+
             int timeSecond = mTXCameraRecord.getPartsManager().getDuration() / 1000;
 
             mProgressTime.setText(String.format(Locale.CHINA, "00:%02d", timeSecond));
-            if (timeSecond == mMaxDuration){
-                stopRecord();
-                return;
-            }
+
+            //stopTime(timeSecond);
 
             if (timeSecond < mMinDuration / 1000) {
                 mIvConfirm.setImageResource(R.drawable.ugc_confirm_disable);
@@ -1352,6 +1354,7 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
         float timeSecondFloat = milliSecond / 1000f;
         int timeSecond = Math.round(timeSecondFloat);
         mProgressTime.setText(String.format(Locale.CHINA, "00:%02d", timeSecond));
+
         if (timeSecondFloat < mMinDuration / 1000f) {
             mIvConfirm.setImageResource(R.drawable.ugc_confirm_disable);
             mIvConfirm.setEnabled(false);
@@ -1360,6 +1363,21 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
             mIvConfirm.setEnabled(true);
         }
         mEnableStop = true;
+
+        stopTime(timeSecond);
+    }
+
+    private void stopTime(int timeSecond){
+        System.out.println("hello time123:"+timeSecond+",max:"+mMaxDuration);
+
+        int max = mMaxDuration / 1000;
+        if (timeSecond == max){
+            pauseRecord();
+            mCustomProgressDialog.show();
+            stopRecord();
+
+            return;
+        }
     }
 
     @Override
@@ -1394,8 +1412,11 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
             if (mTXCameraRecord != null) {
                 int timeSecond = mTXCameraRecord.getPartsManager().getDuration() / 1000;
                 mProgressTime.setText(String.format(Locale.CHINA, "00:%02d", timeSecond));
+
+                //stopTime(timeSecond);
+
             }
-            Toast.makeText(TCVideoRecordActivity.this.getApplicationContext(), "录制失败，原因：" + mTXRecordResult.descMsg, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(TCVideoRecordActivity.this.getApplicationContext(), "录制失败，原因：" + mTXRecordResult.descMsg, Toast.LENGTH_SHORT).show();
         } else {
             mDuration = mTXCameraRecord.getPartsManager().getDuration();
             if (mTXCameraRecord != null) {
