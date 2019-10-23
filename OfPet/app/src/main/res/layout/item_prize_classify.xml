@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="@dimen/dp15"
+    android:id="@+id/layout_item">
+
+    <com.cn.ql.frame.widget.SizeNiceImageView
+        android:id="@+id/ivImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/place_holder"
+        android:scaleType="centerCrop"
+        app:corner_radius="@dimen/dp5"/>
+
+    <TextView android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="海水类"
+        android:textSize="@dimen/sp15"
+        android:textColor="@color/color484848"
+        android:gravity="center"
+        android:lines="1"
+        android:ellipsize="end"
+        android:layout_marginTop="@dimen/dp10"/>
+
+    <TextView android:id="@+id/tvSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="500人已参与"
+        android:textSize="@dimen/sp12"
+        android:textColor="@color/colorFF8000"
+        android:gravity="center"
+        android:lines="1"
+        android:ellipsize="end"
+        android:layout_marginTop="@dimen/dp15"/>
+
+</LinearLayout>

@@ -24,6 +24,9 @@ class UrlId {
         const val saveVideoDiscuss = 205
         const val saveChildDis = 206
         const val videoPraise = 207
+
+        const val getPrizeClassifyList = 301
+        const val getPrizeList = 302
     }
 
 }

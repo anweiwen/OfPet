@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorF0F0F0">
+
+    <com.cn.ql.frame.widget.BarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <include layout="@layout/include_main_top_0" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp200"
+                android:background="@drawable/place_holder">
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/dp20"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="活动分类"
+                    android:textSize="@dimen/sp19"
+                    android:textColor="@color/color404040"
+                    android:textStyle="bold"/>
+
+                <TextView android:id="@+id/tvRule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:text="奖品规则"
+                    android:textSize="@dimen/sp12"
+                    android:textColor="@color/color404040" />
+
+
+            </LinearLayout>
+
+            <com.cn.ql.frame.widget.NoScrollRecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_marginRight="@dimen/dp10"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

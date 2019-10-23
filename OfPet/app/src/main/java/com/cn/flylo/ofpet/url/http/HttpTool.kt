@@ -2,16 +2,10 @@ package com.cn.flylo.ofpet.url.http
 
 import androidx.fragment.app.FragmentActivity
 import com.cn.flylo.ofpet.bean.Account
-import com.cn.flylo.ofpet.url.inter.AccountInterface
-import com.cn.flylo.ofpet.url.inter.CommonInterface
-import com.cn.flylo.ofpet.url.inter.MineInterface
-import com.cn.flylo.ofpet.url.inter.VideoInterface
+import com.cn.flylo.ofpet.url.inter.*
 import com.cn.flylo.ofpet.url.listener.HttpRequestListener
 import com.cn.flylo.ofpet.url.listener.HttpResultRequestListner
-import com.cn.flylo.ofpet.url.tool.AccountTool
-import com.cn.flylo.ofpet.url.tool.CommonTool
-import com.cn.flylo.ofpet.url.tool.MineTool
-import com.cn.flylo.ofpet.url.tool.VideoTool
+import com.cn.flylo.ofpet.url.tool.*
 import com.cn.ql.frame.net.HttpResultListener
 import com.cn.ql.frame.net.RetrofitFactory
 import com.cn.ql.frame.net.RetrofitTool.POST
@@ -120,6 +114,12 @@ class HttpTool : HttpRequestListener {
     fun getMine(): MineTool {
         var inter = RetrofitFactory.getInstance(BaseUrl, MineInterface::class.java)
         var tool = MineTool(inter!!, this)
+        return tool
+    }
+
+    fun getPrize(): PrizeTool {
+        var inter = RetrofitFactory.getInstance(BaseUrl, PrizeInterface::class.java)
+        var tool = PrizeTool(inter!!, this)
         return tool
     }
 }

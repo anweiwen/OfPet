@@ -12,13 +12,33 @@ import com.cn.flylo.ofpet.url.http.HttpTool;
 public class Result {
 
     public static int success = 200;
-    public static int pageSize = 10;
+    public static int pageSize = 20;
 
+    /**
+     * 缩略图
+     * @param attachId
+     * @return
+     */
+    public static String getImageThumbnail(String attachId){
+        return getImage(4, attachId);
+    }
 
-    public static String getImage(String path){
-        if (path.startsWith("http")){
-            return path;
-        }
-        return HttpTool.Companion.getBaseUrl()+path;
+    /**
+     * 原图
+     * @param attachId
+     * @return
+     */
+    public static String getImageOriginal(String attachId){
+        return getImage(2, attachId);
+    }
+
+    /**
+     * 常规1/原图2/缩略4
+     * @param type
+     * @param attachId
+     * @return
+     */
+    public static String getImage(int type, String attachId){
+        return HttpTool.Companion.getBaseUrl()+"pets/attach/showPic?type="+type+"&attachId="+attachId;
     }
 }

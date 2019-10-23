@@ -43,6 +43,9 @@
         <item name="android:textSize">@dimen/sp18</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="TabLayout_Normal_3" parent="TextAppearance.Design.Tab" >
+        <item name="android:textSize">@dimen/sp18</item>
+    </style>
 
     <style name="StockTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabMode">fixed</item>

@@ -40,7 +40,7 @@ public class MainFgm extends BaseControllerFragment {
         initDrawer();
         ViewClick(flHome);
 
-        showAgreement();
+        //showAgreement();
 
         // todo
         //Account.setInstance(null);

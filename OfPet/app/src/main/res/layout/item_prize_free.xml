@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/layout_item"
+    android:gravity="center_vertical"
+    android:layout_marginTop="@dimen/dp8"
+    android:layout_marginBottom="@dimen/dp8">
+
+    <com.shehuan.niv.NiceImageView
+        android:layout_width="@dimen/dp125"
+        android:layout_height="@dimen/dp70"
+        android:src="@drawable/place_holder"
+        app:corner_radius="@dimen/dp5"
+        android:layout_marginLeft="@dimen/dp15"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_marginRight="@dimen/dp15">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="皇后9.9包邮啦，大家快来买买饲料一份"
+            android:textSize="@dimen/sp15"
+            android:textColor="@color/color484848"
+            android:maxLines="2"
+            android:ellipsize="end" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="时间：2019.09.21～2019.09.30"
+            android:layout_marginTop="@dimen/dp5"
+            android:textSize="@dimen/sp12"
+            android:textColor="@color/color999999"
+            android:lines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="已参加人数：00"
+            android:layout_marginTop="@dimen/dp4"
+            android:textSize="@dimen/sp12"
+            android:textColor="@color/colorFF8000"
+            android:lines="1"
+            android:ellipsize="end" />
+
+    </LinearLayout>
+
+</LinearLayout>

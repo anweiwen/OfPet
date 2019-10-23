@@ -17,27 +17,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.OrientationEventListener;
-import android.view.ScaleGestureDetector;
-import android.view.Surface;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.*;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.*;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -45,11 +29,7 @@ import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.demo.videorecord.utils.FileUtils;
 import com.tencent.liteav.demo.videorecord.utils.TCConstants;
 import com.tencent.liteav.demo.videorecord.videopreview.TCVideoPreviewActivity;
-import com.tencent.liteav.demo.videorecord.view.BeautySettingPannel;
-import com.tencent.liteav.demo.videorecord.view.CustomProgressDialog;
-import com.tencent.liteav.demo.videorecord.view.ComposeRecordBtn;
-import com.tencent.liteav.demo.videorecord.view.RecordProgressView;
-import com.tencent.liteav.demo.videorecord.view.TCAudioControl;
+import com.tencent.liteav.demo.videorecord.view.*;
 import com.tencent.rtmp.TXLiveConstants;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.tencent.ugc.TXRecordCommon;
@@ -70,7 +50,7 @@ import static android.view.View.GONE;
 /**
  * UGC小视频录制界面
  */
-public class TCVideoRecordActivity extends Activity implements View.OnClickListener, BeautySettingPannel.IOnBeautyParamsChangeListener
+public class TCVideoRecordOldActivity extends Activity implements View.OnClickListener, BeautySettingPannel.IOnBeautyParamsChangeListener
         , TXRecordCommon.ITXVideoRecordListener, View.OnTouchListener, GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener {
 
     private static final String TAG = "TCVideoRecordActivity";
@@ -93,7 +73,7 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
     private ImageView mIvBeauty;
     private ImageView mIvScale;
     private ComposeRecordBtn mComposeRecordBtn;
-    private FrameLayout mRlAspect;
+    private RelativeLayout mRlAspect;
     private RelativeLayout mRlAspectSelect;
     private ImageView mIvAspectSelectFirst;
     private ImageView mIvAspectSelectSecond;
@@ -111,7 +91,7 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
     private int mFirstSelectScale;
     private int mSecondSelectScale;
     private int mThirdSelectScale;
-    private LinearLayout mRecordRelativeLayout = null;
+    private RelativeLayout mRecordRelativeLayout = null;
     private FrameLayout mMaskLayout;
     private RecordProgressView mRecordProgressView;
     private ImageView mIvDeleteLastPart;
@@ -178,7 +158,7 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        setContentView(R.layout.activity_video_record_1);
+        setContentView(R.layout.activity_video_record);
 
         mTXCameraRecord = TXUGCRecord.getInstance(this.getApplicationContext());
 
@@ -200,7 +180,7 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
             return;
         }
         mMinDuration = intent.getIntExtra(TCConstants.RECORD_CONFIG_MIN_DURATION, 5 * 1000);
-        mMaxDuration = intent.getIntExtra(TCConstants.RECORD_CONFIG_MAX_DURATION, 57 * 1000);
+        mMaxDuration = intent.getIntExtra(TCConstants.RECORD_CONFIG_MAX_DURATION, 60 * 1000);
         mAspectRatio = intent.getIntExtra(TCConstants.RECORD_CONFIG_ASPECT_RATIO, TXRecordCommon.VIDEO_ASPECT_RATIO_9_16);
         mRecommendQuality = intent.getIntExtra(TCConstants.RECORD_CONFIG_RECOMMEND_QUALITY, -1);
         mNeedEditer = intent.getBooleanExtra(TCConstants.RECORD_CONFIG_NEED_EDITER, true);
@@ -254,10 +234,6 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
         //
         mTXCameraRecord.setHomeOrientation(mHomeOrientation);
         mTXCameraRecord.setRenderRotation(mRenderRotation);
-        startQuality();
-    }
-
-    private void startQuality(){
         // 推荐配置
         if (mRecommendQuality >= 0) {
             TXRecordCommon.TXUGCSimpleConfig simpleConfig = new TXRecordCommon.TXUGCSimpleConfig();
@@ -313,11 +289,11 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
 //                mStartPreview = false;
                 mPortrait = !mPortrait;
                 if (mPortrait) {
-                    Toast.makeText(TCVideoRecordActivity.this, "竖屏录制", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TCVideoRecordOldActivity.this, "竖屏录制", Toast.LENGTH_SHORT).show();
                     mHomeOrientation = TXLiveConstants.VIDEO_ANGLE_HOME_DOWN;
                     mRenderRotation = TXLiveConstants.RENDER_ROTATION_0;
                 } else {
-                    Toast.makeText(TCVideoRecordActivity.this, "横屏录制", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TCVideoRecordOldActivity.this, "横屏录制", Toast.LENGTH_SHORT).show();
                     // home键在右边的设置
                     mHomeOrientation = TXLiveConstants.VIDEO_ANGLE_HOME_RIGHT;
                     mRenderRotation = TXLiveConstants.RENDER_ROTATION_90;
@@ -365,7 +341,7 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
         mIvAspectSelectFirst = (ImageView) findViewById(R.id.iv_scale_first);
         mIvAspectSelectSecond = (ImageView) findViewById(R.id.iv_scale_second);
         mIvAspectSelectThird = (ImageView) findViewById(R.id.iv_scale_third);
-        mRlAspect =  findViewById(R.id.layout_aspect);
+        mRlAspect = (RelativeLayout) findViewById(R.id.layout_aspect);
         mRlAspectSelect = (RelativeLayout) findViewById(R.id.layout_aspect_select);
 
         mIvMusic = (ImageView) findViewById(R.id.btn_music_pannel);
@@ -373,8 +349,8 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
 
         mIvBeauty = (ImageView) findViewById(R.id.btn_beauty);
 
-        mRecordRelativeLayout = findViewById(R.id.record_layout);
-        mRecordProgressView =   findViewById(R.id.record_progress_view);
+        mRecordRelativeLayout = (RelativeLayout) findViewById(R.id.record_layout);
+        mRecordProgressView = (RecordProgressView) findViewById(R.id.record_progress_view);
 
         mGestureDetector = new GestureDetector(this, this);
         mScaleGestureDetector = new ScaleGestureDetector(this, this);
@@ -396,8 +372,6 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
         }
 
         mComposeRecordBtn = (ComposeRecordBtn) findViewById(R.id.compose_record_btn);
-
-        // todo 这个是选择速度的
         mRadioGroup = (RadioGroup) findViewById(R.id.rg_record_speed);
         ((RadioButton) findViewById(R.id.rb_normal)).setChecked(true);
         mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -427,134 +401,7 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
 
         mSnapShot = (Button) findViewById(R.id.snapshot);
         mSnapShot.setOnClickListener(this);
-
-        init();
     }
-
-    // todo mine
-    private LinearLayout layout_setting; // 设置按钮
-    private LinearLayout layout_bili; // 比例设置
-
-    private ImageView image_toggle; // 闪光灯
-
-    private LinearLayout layout_57, layout_11;
-
-    private void init(){
-        layout_setting = findViewById(R.id.layout_setting);
-        layout_bili = findViewById(R.id.layout_bili);
-        image_toggle = findViewById(R.id.image_toggle);
-
-        findViewById(R.id.iv_jindu).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                layout_setting.setVisibility(GONE);
-                layout_bili.setVisibility(GONE);
-
-                if (mRadioGroup.getVisibility() == View.VISIBLE){
-                    mRadioGroup.setVisibility(View.GONE);
-                }else{
-                    mRadioGroup.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        findViewById(R.id.iv_setting).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                layout_bili.setVisibility(GONE);
-
-                if (layout_setting.getVisibility() == View.VISIBLE){
-                    layout_setting.setVisibility(View.GONE);
-                }else{
-                    layout_setting.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        findViewById(R.id.iv_scale).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                layout_setting.setVisibility(GONE);
-
-                if (layout_bili.getVisibility() == View.VISIBLE){
-                    layout_bili.setVisibility(View.GONE);
-                }else{
-                    layout_bili.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        findViewById(R.id.layout_toggle).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toggleTorch();
-                layout_setting.setVisibility(GONE);
-            }
-        });
-        findViewById(R.id.layout_close).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                back();
-            }
-        });
-
-        findViewById(R.id.layout_1_1).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                layout_bili.setVisibility(View.GONE);
-                selectAnotherAspect(TXRecordCommon.VIDEO_ASPECT_RATIO_1_1);
-                mIvScale.setImageResource(R.drawable.bili1_1);
-
-            }
-        });
-        findViewById(R.id.layout_9_16).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                layout_bili.setVisibility(View.GONE);
-                selectAnotherAspect(TXRecordCommon.VIDEO_ASPECT_RATIO_9_16);
-                mIvScale.setImageResource(R.drawable.bili9_16);
-            }
-        });
-        findViewById(R.id.layout_3_4).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                layout_bili.setVisibility(View.GONE);
-                selectAnotherAspect(TXRecordCommon.VIDEO_ASPECT_RATIO_3_4);
-                mIvScale.setImageResource(R.drawable.bili3_4);
-            }
-        });
-
-        layout_57 = findViewById(R.id.layout_57);
-        layout_57.setSelected(true);
-        layout_57.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mIvScaleMask.getVisibility() == View.VISIBLE){
-                    return;
-                }
-
-                layout_57.setSelected(true);
-                layout_11.setSelected(false);
-
-                mMaxDuration = 57* 1000;
-                mRecordProgressView.setMaxDuration(mMaxDuration);
-            }
-        });
-        layout_11 = findViewById(R.id.layout_11);
-        layout_11.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mIvScaleMask.getVisibility() == View.VISIBLE){
-                    return;
-                }
-                layout_57.setSelected(false);
-                layout_11.setSelected(true);
-                mMaxDuration = 11 * 1000;
-                mRecordProgressView.setMaxDuration(mMaxDuration);
-            }
-        });
-    }
-
 
     private void initAudioListener() {
         mAudioCtrl.setOnItemClickListener(new RecordDef.OnItemClickListener() {
@@ -621,12 +468,6 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
                 return mTXCameraRecord.getMusicDuration(musicPath);
             }
         });
-    }
-
-    private void goneOperation(){
-        layout_setting.setVisibility(GONE);
-        layout_bili.setVisibility(GONE);
-        mRadioGroup.setVisibility(GONE);
     }
 
     @Override
@@ -742,7 +583,7 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
                 return; // 手机平放时，检测不到有效的角度
             }
 
-            int currentRotation = TCVideoRecordActivity.this.getWindowManager().getDefaultDisplay().getRotation();
+            int currentRotation = TCVideoRecordOldActivity.this.getWindowManager().getDefaultDisplay().getRotation();
             if (mMobileRotation == Surface.ROTATION_90 && currentRotation == Surface.ROTATION_270 && mTXCameraRecord != null) {
                 // 手机从home在右边直接180度切换到home键在左边
                 mHomeOrientation = TXLiveConstants.VIDEO_ANGLE_HOME_LEFT;
@@ -789,9 +630,6 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        goneOperation();
-
-
         int i = view.getId();
         if (i == R.id.back_ll) {
             back();
@@ -844,7 +682,6 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
             stopRecord();
 
         } else if (i == R.id.iv_scale) {
-            // todo 显示比例
             scaleDisplay();
 
         } else if (i == R.id.iv_scale_first) {
@@ -903,58 +740,58 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
 
     private void setSelectAspect() {
         if (mCurrentAspectRatio == TXRecordCommon.VIDEO_ASPECT_RATIO_9_16) {
-            mIvScale.setImageResource(R.drawable.bili9_16);
+            mIvScale.setImageResource(R.drawable.selector_aspect169);
 
             mFirstSelectScale = TXRecordCommon.VIDEO_ASPECT_RATIO_1_1;
-            mIvAspectSelectFirst.setImageResource(R.drawable.bili1_1);
+            mIvAspectSelectFirst.setImageResource(R.drawable.selector_aspect11);
 
             mSecondSelectScale = TXRecordCommon.VIDEO_ASPECT_RATIO_3_4;
-            mIvAspectSelectSecond.setImageResource(R.drawable.bili3_4);
+            mIvAspectSelectSecond.setImageResource(R.drawable.selector_aspect43);
 
             mThirdSelectScale = TXRecordCommon.VIDEO_ASPECT_RATIO_16_9;
-            mIvAspectSelectThird.setImageResource(R.drawable.bili9_16);
+            mIvAspectSelectThird.setImageResource(R.drawable.selector_aspect916);
         } else if (mCurrentAspectRatio == TXRecordCommon.VIDEO_ASPECT_RATIO_1_1) {
-            mIvScale.setImageResource(R.drawable.bili1_1);
+            mIvScale.setImageResource(R.drawable.selector_aspect11);
 
             mFirstSelectScale = TXRecordCommon.VIDEO_ASPECT_RATIO_3_4;
-            mIvAspectSelectFirst.setImageResource(R.drawable.bili3_4);
+            mIvAspectSelectFirst.setImageResource(R.drawable.selector_aspect43);
 
             mSecondSelectScale = TXRecordCommon.VIDEO_ASPECT_RATIO_9_16;
-            mIvAspectSelectSecond.setImageResource(R.drawable.bili9_16);
+            mIvAspectSelectSecond.setImageResource(R.drawable.selector_aspect169);
 
             mThirdSelectScale = TXRecordCommon.VIDEO_ASPECT_RATIO_16_9;
-            mIvAspectSelectThird.setImageResource(R.drawable.bili9_16);
+            mIvAspectSelectThird.setImageResource(R.drawable.selector_aspect916);
         } else if (mCurrentAspectRatio == TXRecordCommon.VIDEO_ASPECT_RATIO_3_4) {
-            mIvScale.setImageResource(R.drawable.bili3_4);
+            mIvScale.setImageResource(R.drawable.selector_aspect43);
             mFirstSelectScale = TXRecordCommon.VIDEO_ASPECT_RATIO_1_1;
-            mIvAspectSelectFirst.setImageResource(R.drawable.bili1_1);
+            mIvAspectSelectFirst.setImageResource(R.drawable.selector_aspect11);
 
             mSecondSelectScale = TXRecordCommon.VIDEO_ASPECT_RATIO_9_16;
-            mIvAspectSelectSecond.setImageResource(R.drawable.bili9_16);
+            mIvAspectSelectSecond.setImageResource(R.drawable.selector_aspect169);
 
             mThirdSelectScale = TXRecordCommon.VIDEO_ASPECT_RATIO_16_9;
-            mIvAspectSelectThird.setImageResource(R.drawable.bili9_16);
+            mIvAspectSelectThird.setImageResource(R.drawable.selector_aspect916);
         } else {
             mIvScale.setImageResource(R.drawable.selector_aspect916);
 
             mFirstSelectScale = TXRecordCommon.VIDEO_ASPECT_RATIO_1_1;
-            mIvAspectSelectFirst.setImageResource(R.drawable.bili1_1);
+            mIvAspectSelectFirst.setImageResource(R.drawable.selector_aspect11);
 
             mSecondSelectScale = TXRecordCommon.VIDEO_ASPECT_RATIO_9_16;
-            mIvAspectSelectSecond.setImageResource(R.drawable.bili9_16);
+            mIvAspectSelectSecond.setImageResource(R.drawable.selector_aspect169);
 
             mThirdSelectScale = TXRecordCommon.VIDEO_ASPECT_RATIO_3_4;
-            mIvAspectSelectThird.setImageResource(R.drawable.bili3_4);
+            mIvAspectSelectThird.setImageResource(R.drawable.selector_aspect43);
         }
     }
 
     private void toggleTorch() {
         if (mIsTorchOpen) {
             mTXCameraRecord.toggleTorch(false);
-            image_toggle.setImageResource(R.drawable.guanbishanguandeng1);
+            mIvTorch.setImageResource(R.drawable.selector_torch_close);
         } else {
             mTXCameraRecord.toggleTorch(true);
-            image_toggle.setImageResource(R.drawable.shanguandeng1);
+            mIvTorch.setImageResource(R.drawable.selector_torch_open);
         }
         mIsTorchOpen = !mIsTorchOpen;
     }
@@ -971,13 +808,7 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
             mRecordProgressView.deleteLast();
             mTXCameraRecord.getPartsManager().deleteLastPart();
             int timeSecond = mTXCameraRecord.getPartsManager().getDuration() / 1000;
-
             mProgressTime.setText(String.format(Locale.CHINA, "00:%02d", timeSecond));
-            if (timeSecond == mMaxDuration){
-                stopRecord();
-                return;
-            }
-
             if (timeSecond < mMinDuration / 1000) {
                 mIvConfirm.setImageResource(R.drawable.ugc_confirm_disable);
                 mIvConfirm.setEnabled(false);
@@ -1098,7 +929,7 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
                 }
             } else {
                 if (!mEnableStop && currentClickTime - mLastClickTime < 3000) {
-                    Toast.makeText(TCVideoRecordActivity.this.getApplicationContext(), "别着急，还没有录制数据", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TCVideoRecordOldActivity.this.getApplicationContext(), "别着急，还没有录制数据", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 pauseRecord();
@@ -1117,9 +948,9 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
         if (startResult != TXRecordCommon.START_RECORD_OK) {
             TXCLog.i(TAG, "resumeRecord, startResult = " + startResult);
             if (startResult == TXRecordCommon.START_RECORD_ERR_NOT_INIT) {
-                Toast.makeText(TCVideoRecordActivity.this.getApplicationContext(), "别着急，画面还没出来", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TCVideoRecordOldActivity.this.getApplicationContext(), "别着急，画面还没出来", Toast.LENGTH_SHORT).show();
             } else if (startResult == TXRecordCommon.START_RECORD_ERR_IS_IN_RECORDING) {
-                Toast.makeText(TCVideoRecordActivity.this.getApplicationContext(), "还有录制的任务没有结束", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TCVideoRecordOldActivity.this.getApplicationContext(), "还有录制的任务没有结束", Toast.LENGTH_SHORT).show();
             }
             return;
         }
@@ -1143,9 +974,6 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
         requestAudioFocus();
 
         mRadioGroup.setVisibility(GONE);
-        layout_setting.setVisibility(GONE);
-        layout_bili.setVisibility(GONE);
-
         mEnableStop = false;
     }
 
@@ -1163,8 +991,7 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
         }
         abandonAudioFocus();
 
-        // todo 隐藏
-        //mRadioGroup.setVisibility(View.VISIBLE);
+        mRadioGroup.setVisibility(View.VISIBLE);
     }
 
     private void stopRecord() {
@@ -1176,8 +1003,7 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
         mPause = false;
         abandonAudioFocus();
 
-        // todo 隐藏
-        //mRadioGroup.setVisibility(View.VISIBLE);
+        mRadioGroup.setVisibility(View.VISIBLE);
     }
 
     private void startRecord() {
@@ -1209,17 +1035,17 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
         int result = mTXCameraRecord.startRecord(customVideoPath, customPartFolder, customCoverPath);
         if (result != TXRecordCommon.START_RECORD_OK) {
             if (result == TXRecordCommon.START_RECORD_ERR_NOT_INIT) {
-                Toast.makeText(TCVideoRecordActivity.this.getApplicationContext(), "别着急，画面还没出来", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TCVideoRecordOldActivity.this.getApplicationContext(), "别着急，画面还没出来", Toast.LENGTH_SHORT).show();
             } else if (result == TXRecordCommon.START_RECORD_ERR_IS_IN_RECORDING) {
-                Toast.makeText(TCVideoRecordActivity.this.getApplicationContext(), "还有录制的任务没有结束", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TCVideoRecordOldActivity.this.getApplicationContext(), "还有录制的任务没有结束", Toast.LENGTH_SHORT).show();
             } else if (result == TXRecordCommon.START_RECORD_ERR_VIDEO_PATH_IS_EMPTY) {
-                Toast.makeText(TCVideoRecordActivity.this.getApplicationContext(), "传入的视频路径为空", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TCVideoRecordOldActivity.this.getApplicationContext(), "传入的视频路径为空", Toast.LENGTH_SHORT).show();
             } else if (result == TXRecordCommon.START_RECORD_ERR_API_IS_LOWER_THAN_18) {
-                Toast.makeText(TCVideoRecordActivity.this.getApplicationContext(), "版本太低", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TCVideoRecordOldActivity.this.getApplicationContext(), "版本太低", Toast.LENGTH_SHORT).show();
             }
             // 增加了TXUgcSDK.licence校验的返回错误码
             else if (result == TXRecordCommon.START_RECORD_ERR_LICENCE_VERIFICATION_FAILED) {
-                Toast.makeText(TCVideoRecordActivity.this.getApplicationContext(), "licence校验失败", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TCVideoRecordOldActivity.this.getApplicationContext(), "licence校验失败", Toast.LENGTH_SHORT).show();
             }
             return;
         }
@@ -1242,10 +1068,6 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
 
         mIvMusicMask.setVisibility(View.VISIBLE);
         mRadioGroup.setVisibility(GONE);
-
-        layout_setting.setVisibility(GONE);
-        layout_bili.setVisibility(GONE);
-
         mEnableStop = false;
     }
 
@@ -1395,7 +1217,7 @@ public class TCVideoRecordActivity extends Activity implements View.OnClickListe
                 int timeSecond = mTXCameraRecord.getPartsManager().getDuration() / 1000;
                 mProgressTime.setText(String.format(Locale.CHINA, "00:%02d", timeSecond));
             }
-            Toast.makeText(TCVideoRecordActivity.this.getApplicationContext(), "录制失败，原因：" + mTXRecordResult.descMsg, Toast.LENGTH_SHORT).show();
+            Toast.makeText(TCVideoRecordOldActivity.this.getApplicationContext(), "录制失败，原因：" + mTXRecordResult.descMsg, Toast.LENGTH_SHORT).show();
         } else {
             mDuration = mTXCameraRecord.getPartsManager().getDuration();
             if (mTXCameraRecord != null) {
