@@ -53,7 +53,7 @@
                     android:paddingTop="@dimen/dp5"
                     android:paddingBottom="@dimen/dp5"/>
 
-                <TextView
+                <TextView android:id="@+id/tvTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2019.04.08~2019.06.08"
@@ -84,7 +84,7 @@
                     android:paddingTop="@dimen/dp5"
                     android:paddingBottom="@dimen/dp5"/>
 
-                <TextView
+                <TextView android:id="@+id/tvSize"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="已参加 456人"
@@ -102,25 +102,33 @@
                 android:layout_marginRight="@dimen/dp20"
                 android:layout_marginTop="@dimen/dp15" >
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="规则"
-                    android:textColor="@color/colorFF8000"
-                    android:textSize="@dimen/sp12"
-                    android:background="@drawable/shape_8"
-                    android:paddingLeft="@dimen/dp8"
-                    android:paddingRight="@dimen/dp8"
-                    android:paddingTop="@dimen/dp5"
-                    android:paddingBottom="@dimen/dp5"/>
+                    android:orientation="horizontal">
+    
+    
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="规则"
+                        android:textColor="@color/colorFF8000"
+                        android:textSize="@dimen/sp12"
+                        android:background="@drawable/shape_8"
+                        android:paddingLeft="@dimen/dp8"
+                        android:paddingRight="@dimen/dp8"
+                        android:paddingTop="@dimen/dp5"
+                        android:paddingBottom="@dimen/dp5"/>
+                    
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
+                <TextView android:id="@+id/tvRule"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则参赛规则"
                     android:textSize="@dimen/sp12"
                     android:textColor="@color/color646464"
-                    android:layout_marginLeft="@dimen/dp15" />
+                    android:layout_marginLeft="@dimen/dp15"/>
 
             </LinearLayout>
 
@@ -160,10 +168,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/dp20"
                     android:gravity="center_vertical">
 
                     <com.shehuan.niv.NiceImageView
+                        android:id="@+id/ivHead"
                         android:layout_width="@dimen/dp45"
                         android:layout_height="@dimen/dp45"
                         android:src="@drawable/place_holder"
@@ -176,15 +184,17 @@
                         android:layout_marginLeft="@dimen/dp10"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <TextView android:id="@+id/tvName"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:lines="1"
+                            android:ellipsize="end"
                             android:text="大华"
                             android:textColor="@color/color181818"
                             android:textSize="@dimen/sp14"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <TextView android:id="@+id/tvDesc"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="热爱生活，朝着诗和远方前进"
                             android:textColor="@color/color8A8A8A"
@@ -193,14 +203,31 @@
 
                     </LinearLayout>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="查看主页"
-                        android:textColor="@color/colorFF8000"
-                        android:textSize="@dimen/sp12"
-                        android:background="@drawable/shape_8"
-                        android:padding="@dimen/dp8"/>
+                        android:orientation="vertical"
+                        android:layout_gravity="top"
+                        android:gravity="center"
+                        android:layout_marginLeft="@dimen/dp10">
+                        
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="奖品视频"
+                            android:textSize="@dimen/sp13"
+                            android:textColor="@color/color666666"/>
+                        
+                        <com.shehuan.niv.NiceImageView
+                            android:id="@+id/ivVideo"
+                            android:layout_width="@dimen/dp75"
+                            android:layout_height="@dimen/dp75"
+                            android:layout_marginTop="@dimen/dp17"
+                            app:corner_radius="@dimen/dp5"
+                            android:src="@drawable/place_holder"
+                            android:scaleType="centerCrop"/>
+                        
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -210,7 +237,7 @@
             <View style="@style/divider_1"
                 android:layout_height="@dimen/dp10"  />
 
-            <TextView
+            <TextView android:id="@+id/tvVideoSize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="参赛作品（000个）"

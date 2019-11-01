@@ -10,8 +10,10 @@ import butterknife.OnClick;
 import com.cn.flylo.ofpet.R;
 import com.cn.flylo.ofpet.base.BaseControllerFragment;
 import com.cn.flylo.ofpet.bean.Bean;
+import com.cn.flylo.ofpet.bean.HotVideo;
 import com.cn.flylo.ofpet.bean.Video;
 import com.cn.flylo.ofpet.bean.base.BaseBean;
+import com.cn.flylo.ofpet.bean.base.DataBean;
 import com.cn.flylo.ofpet.bean.base.ListBean;
 import com.cn.flylo.ofpet.tool.event.EventTool;
 import com.cn.flylo.ofpet.tool.event.EventType;
@@ -48,6 +50,7 @@ public class HomeChildFgm extends BaseControllerFragment {
 
     @Override
     public void InitView() {
+        nextType = type;
         initRecycler();
         InitRefreshLayout();
     }
@@ -120,8 +123,9 @@ public class HomeChildFgm extends BaseControllerFragment {
     }
 
     private int page = 1;
+    private int nextType = 2;
     private void getPopularVideo(){
-        getHttpTool().getVideo().getPopularVideo(type, page);
+        getHttpTool().getVideo().getPopularVideo(nextType, page);
     }
 
     @Override
@@ -139,7 +143,7 @@ public class HomeChildFgm extends BaseControllerFragment {
     }
 
     private void showData(String value) {
-        ListBean<Video> bean = getBean(value, ListBean.class, Video.class);
+        DataBean<HotVideo> bean = getBean(value, DataBean.class, HotVideo.class);
         if (page == 1){
             list.clear();
         }
@@ -147,14 +151,19 @@ public class HomeChildFgm extends BaseControllerFragment {
         int changeSize = 0;
 
         if (bean != null){
-            List<Video> listTmp = bean.result;
-            if (listTmp != null){
-                list.addAll(listTmp);
-                changeSize = listTmp.size();
+            HotVideo hotVideo = bean.result;
+            if (hotVideo != null) {
+                nextType = hotVideo.nextType;
+                List<Video> listTmp = hotVideo.list;
+                if (listTmp != null) {
+                    list.addAll(listTmp);
+                    changeSize = listTmp.size();
+                }
+
             }
-            if (page != 1 && listTmp.size() == 0){
-                page --;
-            }
+        }
+        if (page != 1 && changeSize == 0) {
+            page--;
         }
         if (page == 1) {
             adapter.notifyDataSetChanged();

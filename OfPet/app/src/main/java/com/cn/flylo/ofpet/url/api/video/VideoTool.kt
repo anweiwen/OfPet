@@ -89,6 +89,18 @@ class VideoTool {
         return this
     }
 
+    fun getNewVideos(myId: String?, type: Int, page: Int) : VideoTool {
+        var observable = inter?.getNewVideos(getUserId(), myId, type, page, Result.pageSize)
+        listener?.doPost(UrlId.getNewVideos, observable!!)
+        return this
+    }
+
+    fun saveChildDispra(childId: Int, status: Int) : VideoTool {
+        var observable = inter?.saveChildDispra(getUserId(), childId, status)
+        listener?.doPost(UrlId.saveChildDispra, observable!!)
+        return this
+    }
+
 
 
 }

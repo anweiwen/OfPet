@@ -27,12 +27,7 @@ public class Video {
     public String nickName;
     public String headUrl;
     public Object isFollow;
-    public Object pisTrue;
+    public int pisTrue;
     public Object cisTrue;
-
-
-
-
-
 
 }

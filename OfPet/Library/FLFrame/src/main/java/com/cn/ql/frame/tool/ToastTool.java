@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
+import com.cn.ql.frame.utils.StringUtils;
 
 /**
  * @author AXW on 2018/3/28.
@@ -18,6 +19,9 @@ public class ToastTool {
      * @param text
      */
     public static void showToast(Context context, String text) {
+        if (StringUtils.isEmpty(text)){
+            return;
+        }
         if (mToast == null) {
             mToast = Toast.makeText(context.getApplicationContext(), text, Toast.LENGTH_SHORT);
         }else{

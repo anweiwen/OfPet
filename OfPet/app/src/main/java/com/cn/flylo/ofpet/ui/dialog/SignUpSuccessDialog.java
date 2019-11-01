@@ -2,6 +2,7 @@ package com.cn.flylo.ofpet.ui.dialog;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.View;
 import com.cn.flylo.ofpet.R;
 import com.cn.ql.frame.tool.ViewTool;
@@ -48,7 +49,22 @@ public class SignUpSuccessDialog {
     }
 
     private void InitView() {
+        builder.getMyDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                if (viewClick != null){
+                    viewClick.dismiss();
+                }
+            }
+        });
         ViewTool.InitView(mContext, view, R.id.llParent, 50);
+
+        view.findViewById(R.id.ivClose).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
 
     }
 
@@ -58,6 +74,7 @@ public class SignUpSuccessDialog {
     }
     public interface ViewClick {
         void onViewClick(View v);
+        void dismiss();
     }
 
 }

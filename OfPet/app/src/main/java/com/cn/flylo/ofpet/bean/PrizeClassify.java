@@ -9,5 +9,6 @@ public class PrizeClassify {
     public String attachId;
     public String title;
     public Integer sort;
+    public Integer attendCount;
  
 }

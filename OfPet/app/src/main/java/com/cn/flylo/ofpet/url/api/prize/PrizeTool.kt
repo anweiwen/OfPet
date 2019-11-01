@@ -1,5 +1,6 @@
 package com.cn.flylo.ofpet.url.tool
 
+import com.cn.flylo.ofpet.bean.Account
 import com.cn.flylo.ofpet.url.Result
 import com.cn.flylo.ofpet.url.api.UrlId
 import com.cn.flylo.ofpet.url.inter.*
@@ -26,13 +27,27 @@ class PrizeTool {
         this.listener = listener
     }
 
-    fun getPrizeClassifyList(page: Int) : PrizeTool {
-        getPrizeClassifyList(page, Result.pageSize)
-        return this
+
+    fun getToken(): String?{
+        var account = Account.instance
+        if(account == null){
+            return ""
+        }
+        var token = account.token
+        return token
     }
 
-    fun getPrizeClassifyList(page: Int, size: Int) : PrizeTool {
-        var observable = inter?.getPrizeClassifyList(page, size)
+    fun getUserId(): String?{
+        var account = Account.instance
+        if(account == null){
+            return ""
+        }
+        var userId = account.userId
+        return "${userId}"
+    }
+
+    fun getPrizeClassifyList() : PrizeTool {
+        var observable = inter?.getPrizeClassifyList()
         listener?.doPost(UrlId.getPrizeClassifyList, observable!!)
         return this
     }
@@ -40,6 +55,18 @@ class PrizeTool {
     fun getPrizeList(classifyId: Int, page: Int) : PrizeTool {
         var observable = inter?.getPrizeList(classifyId, page, Result.pageSize)
         listener?.doPost(UrlId.getPrizeList, observable!!)
+        return this
+    }
+
+    fun getPrizeInfo(prizeId: Int, page: Int) : PrizeTool {
+        var observable = inter?.getPrizeInfo(getUserId(), prizeId, page, Result.pageSize)
+        listener?.doPost(UrlId.getPrizeInfo, observable!!)
+        return this
+    }
+
+    fun getAdvertList(status: Int) : PrizeTool {
+        var observable = inter?.getAdvertList(status)
+        listener?.doPost(UrlId.getAdvertList, observable!!)
         return this
     }
 

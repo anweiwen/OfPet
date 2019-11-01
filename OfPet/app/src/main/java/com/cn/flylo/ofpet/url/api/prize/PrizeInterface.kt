@@ -16,8 +16,6 @@ interface PrizeInterface {
 
     @GET(PrizeApi.getPrizeClassifyList)
     fun getPrizeClassifyList(
-        @Query("page") page: Int,
-        @Query("size") size: Int
     ): Observable<JsonElement>
 
     @GET(PrizeApi.getPrizeList)
@@ -25,6 +23,20 @@ interface PrizeInterface {
         @Query("classifyId") classifyId: Int,
         @Query("page") page: Int,
         @Query("size") size: Int
+    ): Observable<JsonElement>
+
+    @FormUrlEncoded
+    @POST(PrizeApi.getPrizeInfo)
+    fun getPrizeInfo(
+            @Field("userId") userId: String?,
+            @Field("prizeId") prizeId: Int,
+            @Field("page") page: Int,
+            @Field("size") size: Int
+    ): Observable<JsonElement>
+
+    @GET(PrizeApi.getAdvertList)
+    fun getAdvertList(
+            @Query("status") status: Int
     ): Observable<JsonElement>
 
 

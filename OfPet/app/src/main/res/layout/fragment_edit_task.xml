@@ -33,7 +33,7 @@
                     android:textColor="@color/color5B5C5C"
                     android:textSize="@dimen/sp14" />
 
-                <EditText
+                <EditText android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
@@ -67,7 +67,7 @@
                     android:textColor="@color/color5B5C5C"
                     android:textSize="@dimen/sp14" />
 
-                <EditText
+                <EditText android:id="@+id/etPhone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
@@ -90,7 +90,8 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp20"
-                android:paddingRight="@dimen/dp20">
+                android:paddingRight="@dimen/dp20"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="@dimen/dp60"
@@ -132,7 +133,7 @@
                     android:textColor="@color/color5B5C5C"
                     android:textSize="@dimen/sp14" />
 
-                <EditText
+                <EditText android:id="@+id/etWeChat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
@@ -187,7 +188,7 @@
                     android:textColor="@color/color5B5C5C"
                     android:textSize="@dimen/sp14"/>
 
-                <EditText
+                <EditText android:id="@+id/etRemark"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp120"
                     android:background="@android:color/transparent"

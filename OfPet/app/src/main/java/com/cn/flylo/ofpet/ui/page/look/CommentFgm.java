@@ -5,6 +5,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import com.cn.flylo.ofpet.R;
 import com.cn.flylo.ofpet.base.BaseControllerFragment;
 import com.cn.flylo.ofpet.bean.Comment;
 import com.cn.flylo.ofpet.bean.base.BaseBean;
+import com.cn.flylo.ofpet.bean.base.DataBean;
 import com.cn.flylo.ofpet.bean.base.DataListBean;
 import com.cn.flylo.ofpet.ui.adapter.CommentAdapter;
 import com.cn.flylo.ofpet.url.api.UrlId;
@@ -36,32 +38,42 @@ public class CommentFgm extends BaseControllerFragment {
     @BindView(R.id.etContent)
     EditText etContent;
 
+    @BindView(R.id.llComment)
+    LinearLayout llComment;
+
     @Override
     public int layoutId() {
         return R.layout.fragment_comment;
     }
 
+    private int type;
     private int id;
     private int commentNum;
 
     @Override
     protected void InitData(Bundle data) {
         super.InitData(data);
+        type = data.getInt("type");
         id = data.getInt("id");
         commentNum = data.getInt("commentNum");
     }
 
     @Override
     public void InitView() {
+        discussId = -1;
         initRecycler();
         showInitData();
         InitRefreshLayout();
+
+        if (type == 1){
+            llComment.setVisibility(View.INVISIBLE);
+        }
+        initEt();
     }
 
     private void showInitData() {
         tvCommentNumber.setText(commentNum + "条评论");
 
-        initEt();
     }
 
     private void initEt() {
@@ -80,6 +92,7 @@ public class CommentFgm extends BaseControllerFragment {
                         saveVideoDiscuss(content);
                     }
                     etContent.setText("");
+                    etContent.setHint("说点什么！！！");
                     discussId = -1;
                 }
                 return false;
@@ -100,6 +113,10 @@ public class CommentFgm extends BaseControllerFragment {
     private CommentAdapter adapter;
     private List<Comment> list = new ArrayList();
 
+    private Comment childComment;
+    private Comment zanComment;
+    private int selectPosition = -1;
+
     private void initRecycler() {
         GridLayoutManager linearLayoutManager = new GridLayoutManager(act, 1);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -110,6 +127,7 @@ public class CommentFgm extends BaseControllerFragment {
         adapter.setItemViewOnClickListener(new ItemViewOnClickListener<Comment>() {
             @Override
             public void onClick(@NotNull View v, Comment data, int position) {
+                selectPosition = position;
                 if (data == null) {
                     return;
                 }
@@ -117,11 +135,15 @@ public class CommentFgm extends BaseControllerFragment {
                     case R.id.layout_item:
                         break;
                     case R.id.tvContent:
+                        childComment = data;
                         discussId = data.discussId;
+                        etContent.setHint("回复@"+data.nickName);
                         showKeyboard(etContent);
                         break;
                     case R.id.llZan:
-                        saveInfoDispra(data.discussId, 1);
+                        zanComment = data;
+                        int isTrue = data.isTrue;
+                        saveInfoDispra(data.discussId, isTrue==1?0:1);
                         break;
                 }
             }
@@ -129,7 +151,8 @@ public class CommentFgm extends BaseControllerFragment {
 
         adapter.setListener(new CommentAdapter.ViewClickListener() {
             @Override
-            public void onChildViewClickListener(View view, Comment data, int position) {
+            public void onChildViewClickListener(View view, Comment data, int parentPosition, int position) {
+                selectPosition = parentPosition;
                 if (data == null) {
                     return;
                 }
@@ -137,11 +160,17 @@ public class CommentFgm extends BaseControllerFragment {
                     case R.id.layout_item:
                         break;
                     case R.id.tvContent:
+                        childComment = list.get(parentPosition);
+                        selectPosition = parentPosition;
+
                         discussId = data.discussId;
+                        etContent.setHint("回复@"+data.nickName);
                         showKeyboard(etContent);
                         break;
                     case R.id.llZan:
-                        saveInfoDispra(data.discussId, 1);
+                        zanComment = data;
+                        int isTrue = data.isTrue;
+                        saveChildDispra(data.childId, isTrue==1?0:1);
                         break;
                 }
             }
@@ -185,16 +214,22 @@ public class CommentFgm extends BaseControllerFragment {
         getHttpTool().getVideo().getVideoDisList(id, page);
     }
 
-
+    private int thisStatus; // 0 未点赞 1 已点赞
     private void saveInfoDispra(int discussId, int status) {
+        thisStatus = status;
         getHttpTool().getVideo().saveInfoDispra(discussId, status);
+    }
+
+    private void saveChildDispra(int childId, int status) {
+        thisStatus = status;
+        getHttpTool().getVideo().saveChildDispra(childId, status);
     }
 
     private void saveVideoDiscuss(String content) {
         getHttpTool().getVideo().saveVideoDiscuss(id, content);
     }
 
-    private int discussId;
+    private int discussId = -1;
 
     private void saveChildDis(String content) {
         getHttpTool().getVideo().saveChildDis(id, discussId, content);
@@ -211,18 +246,64 @@ public class CommentFgm extends BaseControllerFragment {
                     showToast(baseBean.description);
                 }
                 break;
-            case UrlId.saveInfoDispra:
-                showToast(baseBean.description);
+            case UrlId.saveInfoDispra: // 评论点赞
+            case UrlId.saveChildDispra:
                 if (success) {
-                    refresh();
+                    if (thisStatus == 1){
+                        zanComment.isTrue = 1;
+                        zanComment.praiseCount ++;
+                    }else{
+                        zanComment.isTrue = 0;
+                        zanComment.praiseCount --;
+                    }
+                    adapter.notifyItemChanged(selectPosition);
+                }else{
+                    showToast(baseBean.description);
                 }
                 break;
-            case UrlId.saveVideoDiscuss:
+            case UrlId.saveVideoDiscuss: // 保存视频评论
                 showToast(baseBean.description);
                 if (success) {
-                    refresh();
+                    showVideoDiscuss(value, 0);
                 }
                 break;
+            case UrlId.saveChildDis: // 保存子评论
+                showToast(baseBean.description);
+                if (success) {
+                    showVideoDiscuss(value, 1);
+                }
+                break;
+        }
+    }
+
+    // 保存视频评论 0 父评论 1 子评论
+    private void showVideoDiscuss(String value, int type) {
+        DataBean<Comment> bean = getBean(value, DataBean.class, Comment.class);
+        if (bean != null){
+            Comment comment = bean.result;
+            if (comment != null){
+                if (type == 0) {
+                    list.add(0, comment);
+                    adapter.notifyItemInserted(0);
+
+                }else{
+                    if (childComment != null) {
+                        List<Comment> commentList = childComment.list;
+                        if (commentList == null){
+                            commentList = new ArrayList<>();
+                            childComment.list = commentList;
+                        }
+                        commentList.add(comment);
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        }
+        commentNum++;
+        showInitData();
+
+        if (selectPosition != -1) {
+            recyclerView.smoothScrollToPosition(selectPosition);
         }
     }
 

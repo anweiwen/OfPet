@@ -1,128 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorF7F7F7">
-
+    android:background="@color/colorF7F7F7"
+    android:orientation="vertical">
+    
     <com.cn.ql.frame.widget.BarView
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
+    
     <include layout="@layout/include_main_top_0" />
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/coordinator_layout"
+    
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp00"
-        android:layout_weight="1"
-        android:background="@android:color/transparent">
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar_layout"
+        android:layout_height="match_parent">
+        
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinator_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            app:elevation="0dp">
-
-            <LinearLayout
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent">
+            
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_scrollFlags="scroll">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp200"
-                    android:background="@drawable/place_holder">
-
-                </FrameLayout>
-
+                android:background="@android:color/transparent"
+                app:elevation="0dp">
+                
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="@dimen/dp20"
-                    android:gravity="center_vertical">
+                    android:orientation="vertical"
+                    app:layout_scrollFlags="scroll">
+                    
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp200" >
+    
+                        <com.cn.ql.frame.tool.banner.Banner
+                            android:id="@+id/banner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/dp15"
+                            app:indicator_drawable_selected="@mipmap/home_banner_point_01"
+                            app:indicator_drawable_unselected="@mipmap/home_banner_point_02"
+                            android:layout_marginRight="@dimen/dp15"  />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    </FrameLayout>
+                    
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="活动分类~"
-                        android:textSize="@dimen/sp19"
-                        android:textColor="@color/color484848"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvRule"
-                        android:layout_width="wrap_content"
+                        android:layout_margin="@dimen/dp20"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="活动分类~"
+                            android:textColor="@color/color484848"
+                            android:textSize="@dimen/sp19"
+                            android:textStyle="bold" />
+                        
+                        <TextView
+                            android:id="@+id/tvRule"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp5"
+                            android:text="您关注的品类上新活动啦"
+                            android:textColor="@color/colorFF8000"
+                            android:textSize="@dimen/sp14"
+                            android:textStyle="bold" />
+                    
+                    
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp5"
-                        android:text="您关注的品类上新活动啦"
-                        android:textSize="@dimen/sp14"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorFF8000" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/shape_7"
-                    android:layout_marginLeft="@dimen/dp15"
-                    android:layout_marginRight="@dimen/dp15"
-                    android:gravity="center">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerViewAct"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_marginRight="@dimen/dp15"
+                        android:background="@drawable/shape_7"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewAct"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp15"
+                            android:layout_marginTop="@dimen/dp15"
+                            android:layout_marginBottom="@dimen/dp15" />
+                    
+                    </LinearLayout>
+                    
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dp15"
                         android:layout_marginTop="@dimen/dp15"
-                        android:layout_marginBottom="@dimen/dp15" />
-
+                        android:orientation="horizontal">
+                        
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewReceive"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    
+                    </LinearLayout>
                 </LinearLayout>
-
-                <LinearLayout
+                
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabPrizeLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/dp15"
-                    android:layout_marginLeft="@dimen/dp15">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerViewReceive"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabPrizeLayout"
+                    android:layout_height="@dimen/dp44"
+                    android:layout_marginTop="@dimen/dp10"
+                    app:tabIndicator="@drawable/shape_tab"
+                    app:tabIndicatorColor="@color/colorFF8000"
+                    app:tabIndicatorFullWidth="false"
+                    app:tabIndicatorHeight="@dimen/dp3"
+                    app:tabMode="scrollable"
+                    app:tabRippleColor="@android:color/transparent"
+                    app:tabSelectedTextColor="@color/color323232"
+                    app:tabTextAppearance="@style/TabLayout_Normal_3"
+                    app:tabTextColor="@color/color323232" />
+            </com.google.android.material.appbar.AppBarLayout>
+            
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPrizePager"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp44"
-                app:tabIndicatorColor="@color/colorFF8000"
-                android:layout_marginTop="@dimen/dp10"
-                app:tabIndicatorHeight="@dimen/dp3"
-                app:tabIndicatorFullWidth="false"
-                app:tabMode="scrollable"
-                app:tabRippleColor="@android:color/transparent"
-                app:tabSelectedTextColor="@color/color323232"
-                app:tabTextAppearance="@style/TabLayout_Normal_3"
-                app:tabTextColor="@color/color323232"
-                app:tabIndicator="@drawable/shape_tab" />
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPrizePager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

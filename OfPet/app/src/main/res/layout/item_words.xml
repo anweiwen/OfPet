@@ -13,6 +13,7 @@
         android:id="@+id/layout_item">
 
         <com.shehuan.niv.NiceImageView
+            android:id="@+id/ivImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/place_holder"
@@ -33,7 +34,7 @@
                 android:layout_height="@dimen/dp13"
                 android:src="@mipmap/like" />
 
-            <TextView
+            <TextView android:id="@+id/tvZan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp5"
@@ -54,7 +55,8 @@
             android:paddingLeft="@dimen/dp10"
             android:paddingRight="@dimen/dp10"
             android:paddingTop="@dimen/dp5"
-            android:paddingBottom="@dimen/dp5"/>
+            android:paddingBottom="@dimen/dp5"
+            android:visibility="gone"/>
 
     </FrameLayout>
 

@@ -16,6 +16,7 @@
         android:gravity="center">
         
         <com.shehuan.niv.NiceImageView
+            android:id="@+id/ivImage"
             android:layout_width="@dimen/dp160"
             android:layout_height="@dimen/dp110"
             app:corner_top_left_radius="@dimen/dp3"
@@ -28,7 +29,7 @@
             android:orientation="vertical"
             android:layout_marginLeft="@dimen/dp10">
 
-            <TextView
+            <TextView android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="水果生鲜类"
@@ -37,7 +38,7 @@
                 android:textColor="@color/color2F2F2F"
                 android:textSize="@dimen/sp13"/>
 
-            <TextView
+            <TextView android:id="@+id/tvTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="时间：2019/05/12-2019/06/12"
@@ -45,7 +46,7 @@
                 android:textSize="@dimen/sp10"
                 android:layout_marginTop="@dimen/dp10"/>
 
-            <TextView
+            <TextView android:id="@+id/tvSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="已参加人数：000"
@@ -53,7 +54,7 @@
                 android:textSize="@dimen/sp10"
                 android:layout_marginTop="@dimen/dp10"/>
 
-            <TextView
+            <TextView android:id="@+id/tvStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="进行中"
@@ -61,7 +62,7 @@
                 android:textSize="@dimen/sp9"
                 android:layout_marginTop="@dimen/dp10"/>
 
-            <TextView
+            <TextView android:id="@+id/tvLook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="去看看"

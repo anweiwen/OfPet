@@ -13,6 +13,7 @@ import com.cn.flylo.ofpet.base.BaseControllerActivity;
 import com.cn.flylo.ofpet.base.BaseControllerFragment;
 import com.cn.flylo.ofpet.bean.Bean;
 import com.cn.flylo.ofpet.ui.adapter.CommentAdapter;
+import com.cn.flylo.ofpet.ui.controller.StartTool;
 import com.cn.ql.frame.listener.itemclick.ItemViewOnClickListener;
 import com.cn.ql.frame.sytem.AndroidBug5497Workaround;
 import org.jetbrains.annotations.NotNull;
@@ -29,9 +30,11 @@ public class CommentAct extends BaseControllerActivity {
 
     private int id;
     private int commentNum;
+    private int type;
     @Override
     protected void InitData(Bundle data) {
         super.InitData(data);
+        type = data.getInt("type");
         id = data.getInt("id");
         commentNum = data.getInt("commentNum");
     }
@@ -44,6 +47,8 @@ public class CommentAct extends BaseControllerActivity {
         CommentFgm commentFgm = new CommentFgm();
         Bundle bundle = new Bundle();
         bundle.putInt("id", id);
+        bundle.putInt("commentNum", commentNum);
+        bundle.putInt("type", type);
         commentFgm.setArguments(bundle);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -53,7 +58,10 @@ public class CommentAct extends BaseControllerActivity {
     }
 
 
+    @Override
+    public void finish() {
+        super.finish();
 
-
-
+        StartTool.INSTANCE.BottomToTop(this);
+    }
 }

@@ -20,6 +20,7 @@ import com.cn.ql.frame.widget.NoScrollRecyclerView;
 import com.shehuan.niv.NiceImageView;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,26 +54,32 @@ public class CommentAdapter extends BaseRecyclerAdapter<Comment, CommentAdapter.
         viewHolder.tvContent.setOnClickListener(new BaseItemViewOnClick(itemViewOnClickListener, item, i));
         viewHolder.llZan.setOnClickListener(new BaseItemViewOnClick(itemViewOnClickListener, item, i));
 
-        viewHolder.recyclerView.setVisibility(View.GONE);
-        List<Comment> list = item.list;
+        List<Comment> list = new ArrayList<>();
         viewHolder.recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        CommentChildAdapter adapter = new CommentChildAdapter(list);
+        viewHolder.recyclerView.setAdapter(adapter);
 
-        if (list != null) {
-            viewHolder.recyclerView.setVisibility(View.VISIBLE);
-            CommentChildAdapter adapter = new CommentChildAdapter(list);
-            adapter.setItemViewOnClickListener(new ItemViewOnClickListener<Comment>() {
-                @Override
-                public void onClick(@NotNull View v, Comment data, int position) {
-                    if (data == null){
-                        return;
-                    }
-                    if (listener != null){
-                        listener.onChildViewClickListener(v, data, position);
-                    }
+        adapter.setItemViewOnClickListener(new ItemViewOnClickListener<Comment>() {
+            @Override
+            public void onClick(@NotNull View v, Comment data, int position) {
+                if (data == null){
+                    return;
                 }
-            });
-            viewHolder.recyclerView.setAdapter(adapter);
+                if (listener != null){
+                    listener.onChildViewClickListener(v, data, i, position);
+                }
+            }
+        });
+
+        List<Comment> listTmp = item.list;
+        viewHolder.recyclerView.setVisibility(View.GONE);
+        if (listTmp != null) {
+            if (listTmp.size() != 0){
+                viewHolder.recyclerView.setVisibility(View.VISIBLE);
+                list.addAll(listTmp);
+            }
         }
+        adapter.notifyDataSetChanged();
 
 
         GlideImage.INSTANCE.loadImage(context, item.headUrl, viewHolder.ivHead, R.drawable.place_holder_head);
@@ -80,8 +87,8 @@ public class CommentAdapter extends BaseRecyclerAdapter<Comment, CommentAdapter.
         viewHolder.tvContent.setText(getStr(item.context));
         viewHolder.tvZan.setText(String.valueOf(item.praiseCount));
 
-        int status = item.status; // 0 未点赞 1已点赞
-        viewHolder.llZan.setSelected(status ==1);
+        int isTrue = item.isTrue; // 0 未点赞 1已点赞
+        viewHolder.llZan.setSelected(isTrue ==1);
 
     }
 
@@ -116,7 +123,7 @@ public class CommentAdapter extends BaseRecyclerAdapter<Comment, CommentAdapter.
         this.listener = listener;
     }
     public interface ViewClickListener{
-        void onChildViewClickListener(View view, Comment comment, int position);
+        void onChildViewClickListener(View view, Comment comment, int parentPosition, int position);
     }
 
 }

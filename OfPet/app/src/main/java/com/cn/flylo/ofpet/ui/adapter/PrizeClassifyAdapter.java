@@ -50,7 +50,7 @@ public class PrizeClassifyAdapter extends BaseRecyclerAdapter<PrizeClassify, Pri
 
         GlideImage.INSTANCE.loadImage(context, Result.getImageThumbnail(item.attachId), viewHolder.ivImage, R.drawable.place_holder);
         viewHolder.tvName.setText(getStr(item.title));
-        viewHolder.tvSize.setText(item.version+"人已参与");
+        viewHolder.tvSize.setText(item.attendCount+"人已参与");
     }
 
     static

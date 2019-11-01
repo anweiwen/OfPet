@@ -39,7 +39,7 @@
 
             </LinearLayout>
 
-            <ImageView
+            <ImageView android:id="@+id/ivClose"
                 android:layout_width="@dimen/dp30"
                 android:layout_height="@dimen/dp30"
                 android:src="@mipmap/guangbi1"

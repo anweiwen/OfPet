@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp49"
+        android:orientation="horizontal"
+        android:background="@color/colorFF8000">
+ 
+
+        <TextView
+            android:id="@+id/tvYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="2017.7"
+            android:gravity="center"
+            android:textSize="@dimen/sp15"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+    </FrameLayout>
+
+    <View style="@style/divider_1" />
+
+    <com.cn.flylo.ofpet.utils.date.InnerGridView
+        android:id="@+id/gvWeek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="7"
+        android:listSelector="@android:color/transparent"
+        android:layout_marginTop="@dimen/dp5"/>
+
+    <com.cn.flylo.ofpet.utils.date.InnerGridView
+        android:id="@+id/gvDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="7"
+        android:listSelector="@android:color/transparent"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginBottom="@dimen/dp10"/>
+</LinearLayout>

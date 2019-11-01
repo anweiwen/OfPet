@@ -28,6 +28,7 @@ class HttpTool : HttpRequestListener {
     companion object {
         var BaseUrl =
             "http://129.204.108.149:8080/"
+//        "http://192.168.31.185:8080/"
 
     }
 
@@ -120,6 +121,12 @@ class HttpTool : HttpRequestListener {
     fun getPrize(): PrizeTool {
         var inter = RetrofitFactory.getInstance(BaseUrl, PrizeInterface::class.java)
         var tool = PrizeTool(inter!!, this)
+        return tool
+    }
+
+    fun getTask(): TaskTool {
+        var inter = RetrofitFactory.getInstance(BaseUrl, TaskInterface::class.java)
+        var tool = TaskTool(inter!!, this)
         return tool
     }
 }

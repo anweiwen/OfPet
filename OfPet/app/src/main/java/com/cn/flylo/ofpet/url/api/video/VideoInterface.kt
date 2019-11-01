@@ -1,7 +1,5 @@
 package com.cn.flylo.ofpet.url.inter
 
-import com.cn.flylo.ofpet.url.api.AccountApi
-import com.cn.flylo.ofpet.url.api.CommonApi
 import com.cn.flylo.ofpet.url.api.VideoApi
 import com.google.gson.JsonElement
 import io.reactivex.Observable
@@ -69,6 +67,23 @@ interface VideoInterface {
         @Field("userId") userId: String?,
         @Field("videoId") videoId: Int,
         @Field("status") status: Int
+    ): Observable<JsonElement>
+
+    @GET(VideoApi.getNewVideos)
+    fun getNewVideos(
+        @Query("userId") userId: String?,
+        @Query("myId") myId: String?,
+        @Query("type") type: Int,
+        @Query("page") page: Int,
+        @Query("size") size: Int
+    ): Observable<JsonElement>
+
+    @FormUrlEncoded
+    @POST(VideoApi.saveChildDispra)
+    fun saveChildDispra(
+            @Field("userId") userId: String?,
+            @Field("childId") childId: Int,
+            @Field("status") status: Int
     ): Observable<JsonElement>
 
 }

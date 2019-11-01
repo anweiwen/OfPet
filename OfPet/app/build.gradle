@@ -41,6 +41,23 @@ android {
     packagingOptions {
         pickFirst '**/libc++_shared.so'
     }
+
+
+// 签名配置
+    signingConfigs {
+        release {
+            storeFile file("./keystore/flylo.jks")
+            storePassword "flylo123"
+            keyAlias "flylo"
+            keyPassword "flylo123"
+        }
+        debug {
+            storeFile file("./keystore/flylo.jks")
+            storePassword "flylo123"
+            keyAlias "flylo"
+            keyPassword "flylo123"
+        }
+    }
 }
 
 dependencies {

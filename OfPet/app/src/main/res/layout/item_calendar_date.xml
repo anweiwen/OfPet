@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rlItem"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <com.cn.ql.frame.widget.SizeTextView
+        android:id="@+id/tvWeek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp8"
+        android:text="一"
+        android:textSize="@dimen/sp15"
+        android:gravity="center"
+        android:textColor="@android:color/black" />
+
+    <View android:id="@+id/text_this_day"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/dp8"
+        android:layout_height="@dimen/dp2"
+        android:background="@color/black"
+        android:layout_below="@id/tvWeek"
+        android:layout_alignLeft="@id/tvWeek"
+        android:layout_alignRight="@id/tvWeek"
+        android:visibility="invisible"/>
+
+</RelativeLayout>

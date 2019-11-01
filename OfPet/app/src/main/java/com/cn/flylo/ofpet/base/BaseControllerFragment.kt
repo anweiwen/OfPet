@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.cn.flylo.ofpet.R
+import com.cn.flylo.ofpet.bean.Account
 import com.cn.flylo.ofpet.bean.base.BaseBean
 import com.cn.flylo.ofpet.tool.SaveTool
 import com.cn.flylo.ofpet.url.Result
@@ -132,6 +133,17 @@ abstract class BaseControllerFragment : BaseFragment() {
 
     }
 
+    open fun isLogin(): Boolean{
+        var account = Account.instance
+        if (account == null){
+            return false
+        }
+        var token = account.token;
+        if (StringUtils.isEmpty(token)){
+            return false
+        }
+        return true
+    }
 
     open fun logoutToLogin() {
         SaveTool(act).putUser("")

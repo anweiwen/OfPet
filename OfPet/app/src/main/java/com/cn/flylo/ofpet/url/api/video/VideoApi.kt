@@ -49,6 +49,16 @@ interface VideoApi {
          */
         const val videoPraise = "pets/video/videoPraise"
 
+        /**
+         * 获取最新/闲置视频列表
+         */
+        const val getNewVideos = "pets/video/getNewVideos"
+
+        /**
+         * 子评论点赞
+         */
+        const val saveChildDispra = "pets/video/saveChildDispra"
+
 
 
     }

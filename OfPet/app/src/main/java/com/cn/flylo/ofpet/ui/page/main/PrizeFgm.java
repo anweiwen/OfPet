@@ -1,7 +1,10 @@
 package com.cn.flylo.ofpet.ui.page.main;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -12,10 +15,10 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import com.cn.flylo.ofpet.R;
 import com.cn.flylo.ofpet.base.BaseControllerFragment;
+import com.cn.flylo.ofpet.bean.Advert;
 import com.cn.flylo.ofpet.bean.Bean;
 import com.cn.flylo.ofpet.bean.PrizeClassify;
 import com.cn.flylo.ofpet.bean.base.BaseBean;
-import com.cn.flylo.ofpet.bean.base.DataListBean;
 import com.cn.flylo.ofpet.bean.base.ListBean;
 import com.cn.flylo.ofpet.tool.event.EventTool;
 import com.cn.flylo.ofpet.tool.event.EventType;
@@ -26,11 +29,21 @@ import com.cn.flylo.ofpet.ui.controller.StartTool;
 import com.cn.flylo.ofpet.ui.dialog.PrizeRuleDialog;
 import com.cn.flylo.ofpet.ui.page.prize.PrizeActListFgm;
 import com.cn.flylo.ofpet.ui.page.prize.PrizeFreeListFgm;
+import com.cn.flylo.ofpet.ui.page.prize.SignInFgm;
+import com.cn.flylo.ofpet.url.Result;
 import com.cn.flylo.ofpet.url.api.UrlId;
 import com.cn.ql.frame.listener.itemclick.ItemViewOnClickListener;
+import com.cn.ql.frame.tool.GlideImage;
+import com.cn.ql.frame.tool.banner.Banner;
+import com.cn.ql.frame.tool.banner.listener.OnBannerListener;
+import com.cn.ql.frame.tool.banner.loader.ImageLoader;
+import com.cn.ql.frame.utils.WebViewUtils;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.JsonElement;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +61,9 @@ public class PrizeFgm extends BaseControllerFragment {
     @BindView(R.id.viewPrizePager)
     ViewPager viewPrizePager;
 
+    @BindView(R.id.banner)
+    Banner banner;
+
     @Override
     public int layoutId() {
         return R.layout.fragment_prize;
@@ -58,12 +74,13 @@ public class PrizeFgm extends BaseControllerFragment {
         initRecyclerAct();
         initRecyclerReceive();
         initTab();
+        InitRefreshLayout();
     }
 
 
     @OnClick({R.id.image_top_menu, R.id.tvTopRight})
-    public void ViewClick(View view){
-        switch (view.getId()){
+    public void ViewClick(View view) {
+        switch (view.getId()) {
             case R.id.image_top_menu:
                 EventTool.getInstance().send(EventType.OpenMenu);
                 break;
@@ -77,22 +94,73 @@ public class PrizeFgm extends BaseControllerFragment {
         }
     }
 
+    private List<Advert> list_ads = new ArrayList<>();
+    private void showBanner() {
+        banner.setImageLoader(new ImageLoader() {
+            @Override
+            public void displayImage(Context context, Object path, ImageView imageView) {
+                String url = (String) path;
+                GlideImage.INSTANCE.loadImage(act, url, imageView, R.drawable.place_holder);
+            }
+        });
+        banner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                if (list_ads.size() > position) {
+                    Advert item = list_ads.get(position);
+                    if (item == null){
+                        return;
+                    }
+                    int type = item.type; // 1 外链 2 关联id
+                    String about = item.abort;
+                    switch (type){
+                        case 1:
+                            WebViewUtils.startExplorer(act, about);
+                            break;
+                        case 2:
+                            try {
+                                int id = Integer.parseInt(about);
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("id", id);
+                                StartTool.INSTANCE.start(act, PageEnum.PrizeDetails, bundle);
+                            }catch (Exception e){
+                                showToast("类型信息错误");
+                            }
+                            break;
+                    }
+
+                }
+            }
+        });
+
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < list_ads.size(); i++) {
+            Advert ads = list_ads.get(i);
+            if (ads != null) {
+                list.add(Result.getImageOriginal(String.valueOf(ads.attachId)));
+            }
+        }
+        banner.setImages(list);
+        banner.start();
+    }
+
     private PrizeClassifyAdapter adapter;
     private List<PrizeClassify> list = new ArrayList();
+
     private void initRecyclerAct() {
         GridLayoutManager mgr = new GridLayoutManager(act, 4);
         recyclerViewAct.setLayoutManager(mgr);
-        if (adapter == null){
+        if (adapter == null) {
             adapter = new PrizeClassifyAdapter(list);
         }
         recyclerViewAct.setAdapter(adapter);
         adapter.setItemViewOnClickListener(new ItemViewOnClickListener<PrizeClassify>() {
             @Override
             public void onClick(@NotNull View v, PrizeClassify data, int position) {
-                if (data == null){
+                if (data == null) {
                     return;
                 }
-                switch (v.getId()){
+                switch (v.getId()) {
                     case R.id.layout_item:
                         Bundle bundle = new Bundle();
                         bundle.putInt("id", data.classifyId);
@@ -106,20 +174,21 @@ public class PrizeFgm extends BaseControllerFragment {
 
     private PrizeReceiveAdapter adapterReceive;
     private List<Bean> listReceive = new ArrayList();
+
     private void initRecyclerReceive() {
         GridLayoutManager mgr = new GridLayoutManager(act, 3);
         recyclerViewReceive.setLayoutManager(mgr);
-        if (adapterReceive == null){
+        if (adapterReceive == null) {
             adapterReceive = new PrizeReceiveAdapter(listReceive);
         }
         recyclerViewReceive.setAdapter(adapterReceive);
         adapterReceive.setItemViewOnClickListener(new ItemViewOnClickListener<Bean>() {
             @Override
             public void onClick(@NotNull View v, Bean data, int position) {
-                if (data == null){
+                if (data == null) {
                     return;
                 }
-                switch (v.getId()){
+                switch (v.getId()) {
                     case R.id.layout_item:
                         StartTool.INSTANCE.start(act, PageEnum.PrizeList);
                         break;
@@ -127,7 +196,7 @@ public class PrizeFgm extends BaseControllerFragment {
             }
         });
 
-        for (int i = 0; i < 3; i++){
+        for (int i = 0; i < 3; i++) {
             listReceive.add(new Bean());
         }
         adapterReceive.notifyDataSetChanged();
@@ -135,6 +204,7 @@ public class PrizeFgm extends BaseControllerFragment {
     }
 
     private int index;
+
     private void initTab() {
         addTabTitle();
         viewPrizePager.setAdapter(new MyAdapter(getFragmentManager()));
@@ -171,8 +241,9 @@ public class PrizeFgm extends BaseControllerFragment {
     private PrizeFreeListFgm child_one;
     private PrizeActListFgm child_two;
     private PrizeActListFgm child_three;
-    private PrizeActListFgm child_four;
+    private SignInFgm child_four;
     private PrizeActListFgm child_five;
+
     class MyAdapter extends FragmentPagerAdapter {
 
         public MyAdapter(FragmentManager fm) {
@@ -204,7 +275,7 @@ public class PrizeFgm extends BaseControllerFragment {
                     break;
                 case 3:
                     if (child_four == null) {
-                        child_four = new PrizeActListFgm();
+                        child_four = new SignInFgm();
                     }
                     fgm = child_four;
                     break;
@@ -225,34 +296,47 @@ public class PrizeFgm extends BaseControllerFragment {
         }
     }
 
+    // refresh
+
+    @Override
+    public void refresh(@Nullable SmartRefreshLayout refreshlayout) {
+        super.refresh(refreshlayout);
+        InitLoad();
+    }
+
+
     // todo
 
     @Override
     public void InitLoad() {
         super.InitLoad();
         getPrizeClassifyList();
+        getAdvertList();
     }
 
-    private int page = 1;
-    private void getPrizeClassifyList(){
-        getHttpTool().getPrize().getPrizeClassifyList(page, 4);
+    private void getPrizeClassifyList() {
+        getHttpTool().getPrize().getPrizeClassifyList();
+    }
+
+    private void getAdvertList(){
+        getHttpTool().getPrize().getAdvertList(1);
     }
 
     @Override
     public void onNetSuccess(int urlId, @NotNull JsonElement jsonElement, @NotNull String value, @NotNull BaseBean baseBean, boolean success) {
         super.onNetSuccess(urlId, jsonElement, value, baseBean, success);
-        switch (urlId){
+        switch (urlId) {
             case UrlId.getPrizeClassifyList:
-                if (success){
+                if (success) {
                     showPrizeClassify(value);
-                }else{
+                } else {
                     showToast(baseBean.description);
                 }
                 break;
-            case UrlId.getPrizeList:
-                if (success){
-
-                }else{
+            case UrlId.getAdvertList:
+                if (success) {
+                    showAdvert(value);
+                } else {
                     showToast(baseBean.description);
                 }
                 break;
@@ -260,29 +344,31 @@ public class PrizeFgm extends BaseControllerFragment {
     }
 
     private void showPrizeClassify(String value) {
-        DataListBean<PrizeClassify> bean = getBean(value, DataListBean.class, PrizeClassify.class);
-        if (page == 1){
-            list.clear();
-        }
-        int size = list.size();
-        int changeSize = 0;
-
-        if (bean != null){
-            if (bean.result != null) {
-                List<PrizeClassify> listTmp = bean.result.content;
-                if (listTmp != null) {
+        ListBean<PrizeClassify> bean = getBean(value, ListBean.class, PrizeClassify.class);
+        list.clear();
+        if (bean != null) {
+            List<PrizeClassify> listTmp = bean.result;
+            if (listTmp != null) {
+                int len = listTmp.size();
+                if (len > 4){
+                    list.addAll(listTmp.subList(0, 4));
+                }else{
                     list.addAll(listTmp);
-                    changeSize = listTmp.size();
-                }
-                if (page != 1 && listTmp.size() == 0) {
-                    page--;
                 }
             }
         }
-        if (page == 1) {
-            adapter.notifyDataSetChanged();
-        }else{
-            adapter.notifyItemRangeInserted(size, changeSize);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void showAdvert(String value) {
+        ListBean<Advert> bean = getBean(value, ListBean.class, Advert.class);
+        list_ads.clear();
+        if (bean != null){
+            List<Advert> listTmp = bean.result;
+            if (listTmp != null){
+                list_ads.addAll(listTmp);
+            }
         }
+        showBanner();
     }
 }

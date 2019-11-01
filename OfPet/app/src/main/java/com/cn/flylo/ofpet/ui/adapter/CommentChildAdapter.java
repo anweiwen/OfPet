@@ -49,11 +49,15 @@ public class CommentChildAdapter extends BaseRecyclerAdapter<Comment, CommentChi
         Comment item = getDatas().get(i);
         viewHolder.layout_item.setOnClickListener(new BaseItemViewOnClick(itemViewOnClickListener, item, i));
         viewHolder.tvContent.setOnClickListener(new BaseItemViewOnClick(itemViewOnClickListener, item, i));
+        viewHolder.llZan.setOnClickListener(new BaseItemViewOnClick(itemViewOnClickListener, item, i));
 
         GlideImage.INSTANCE.loadImage(context, item.headUrl, viewHolder.ivHead, R.drawable.place_holder_head);
         viewHolder.tvName.setText(getStr(item.nickName));
         viewHolder.tvContent.setText(getStr(item.context));
         viewHolder.tvZan.setText(String.valueOf(item.praiseCount));
+
+        int isTrue = item.isTrue; // 0 未点赞 1已点赞
+        viewHolder.llZan.setSelected(isTrue ==1);
     }
 
 
@@ -72,6 +76,8 @@ public class CommentChildAdapter extends BaseRecyclerAdapter<Comment, CommentChi
         ImageView ivZan;
         @BindView(R.id.tvZan)
         TextView tvZan;
+        @BindView(R.id.llZan)
+        LinearLayout llZan;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -11,7 +11,7 @@ public class JumpCode {
     /**
      *
      */
-    public static final int a = 0x01;
+    public static final int refresh = 0x01;
 
     /**
      * 评论

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,35 +11,51 @@
 
     <include layout="@layout/include_main_top_0" />
 
-    <ScrollView
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <LinearLayout
+    
+    
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <FrameLayout
+            android:layout_height="match_parent">
+        
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp200"
-                android:background="@drawable/place_holder">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp200" >
+                
+                    <com.cn.ql.frame.tool.banner.Banner
+                        android:id="@+id/banner_task"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/dp15"
+                        app:indicator_drawable_selected="@mipmap/home_banner_point_01"
+                        app:indicator_drawable_unselected="@mipmap/home_banner_point_02"
+                        android:layout_marginRight="@dimen/dp15"  />
+            
+            
+                </FrameLayout>
+            
+                <View style="@style/divider_1"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:layout_marginBottom="@dimen/dp15"
+                    android:layout_marginLeft="@dimen/dp8"
+                    android:layout_marginRight="@dimen/dp8"/>
+            
+                <com.cn.ql.frame.widget.NoScrollRecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+        
+            </LinearLayout>
+    
+        </ScrollView>
 
-            </FrameLayout>
-
-            <View style="@style/divider_1"
-                android:layout_marginTop="@dimen/dp15"
-                android:layout_marginBottom="@dimen/dp15"
-                android:layout_marginLeft="@dimen/dp8"
-                android:layout_marginRight="@dimen/dp8"/>
-
-            <com.cn.ql.frame.widget.NoScrollRecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </LinearLayout>
-
-    </ScrollView>
-
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

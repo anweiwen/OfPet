@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/qiandao1"/>
+    
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white">
+        
+            <com.cn.flylo.ofpet.utils.date.SignDate
+                android:id="@+id/sign_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+    
+        </LinearLayout>
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:text="兑换推荐"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp15"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"/>
+        
+        <com.cn.ql.frame.widget.NoScrollRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

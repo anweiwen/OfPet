@@ -20,6 +20,16 @@ interface PrizeApi {
          */
         const val getPrizeList = "pets/prize/getPrizeList"
 
+        /**
+         * 获取奖品详情
+         */
+        const val getPrizeInfo = "pets/prize/getPrizeInfo"
+
+        /**
+         * 获取广告信息列表
+         */
+        const val getAdvertList = "pets/advert/getAdvertList"
+
 
     }
 }

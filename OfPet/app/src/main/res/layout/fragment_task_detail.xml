@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
+            <ImageView android:id="@+id/ivBg"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp210"
                 android:src="@drawable/place_holder"
@@ -31,7 +31,7 @@
                 android:layout_marginTop="@dimen/dp190"
                 android:padding="@dimen/dp20">
 
-                <TextView
+                <TextView android:id="@+id/tvTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="最美古装征集活动，还原古装的你，快来试试吧"
@@ -39,7 +39,7 @@
                     android:textColor="@color/color2F2F2F"
                     android:lineSpacingExtra="@dimen/dp8" />
 
-                <TextView
+                <TextView android:id="@+id/tvTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="时间：2019/05/12-2019/06/12"
@@ -47,7 +47,7 @@
                     android:textSize="@dimen/sp12"
                     android:layout_marginTop="@dimen/dp20" />
 
-                <TextView
+                <TextView android:id="@+id/tvSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="已参加人数：000"
@@ -82,6 +82,7 @@
                         android:gravity="center_vertical">
 
                         <com.shehuan.niv.NiceImageView
+                            android:id="@+id/ivHead"
                             android:layout_width="@dimen/dp45"
                             android:layout_height="@dimen/dp45"
                             android:src="@drawable/place_holder"
@@ -94,15 +95,15 @@
                             android:layout_marginLeft="@dimen/dp10"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <TextView android:id="@+id/tvName"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="大华"
                                 android:textColor="@color/color181818"
                                 android:textSize="@dimen/sp14" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <TextView android:id="@+id/tvDesc"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="热爱生活，朝着诗和远方前进"
                                 android:textColor="@color/color8A8A8A"

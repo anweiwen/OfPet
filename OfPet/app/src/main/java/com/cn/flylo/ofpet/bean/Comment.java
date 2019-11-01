@@ -20,6 +20,7 @@ public class Comment {
     public int childId;
     public String pNickName;
     public String puserId;
+    public int isTrue;
 
     public List<Comment> list;
 

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cn.flylo.ofpet.R;
 import com.cn.flylo.ofpet.bean.Bean;
 import com.cn.flylo.ofpet.bean.Video;
+import com.cn.flylo.ofpet.url.Result;
 import com.cn.flylo.ofpet.utils.Constants;
 import com.cn.ql.frame.base.BaseRecyclerAdapter;
 import com.cn.ql.frame.listener.itemclick.BaseItemViewOnClick;
@@ -49,7 +50,7 @@ public class HomeAdapter extends BaseRecyclerAdapter<Video, HomeAdapter.ViewHold
         Video item = getDatas().get(i);
         viewHolder.layout_item.setOnClickListener(new BaseItemViewOnClick(itemViewOnClickListener, item, i));
 
-        GlideImage.INSTANCE.loadImage(context, item.videoUrl, viewHolder.ivImage, R.drawable.place_holder);
+        GlideImage.INSTANCE.loadImage(context, Result.getImageOriginal(item.attachId), viewHolder.ivImage, R.drawable.place_holder);
         GlideImage.INSTANCE.loadImage(context, item.headUrl, viewHolder.ivHead, R.drawable.place_holder_head);
 
         Integer goodsNum = item.goodsNum;
